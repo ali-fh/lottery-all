@@ -1,4 +1,4 @@
-import { generatListChildren } from '../src/ButtonGenerator'
+import { generatListChildren } from '../../src/ButtonGenerator'
 
 describe('测试 generatListChildren', () => {
     it('生成双位数号码', () => {
