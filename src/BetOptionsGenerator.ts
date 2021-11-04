@@ -1,33 +1,28 @@
-interface List {
-    // 标题
-    label: string
-    // 投注选项
-    options: string[]
-    // 被选中的的值
-    selected: string[]
-    // 支援快速选号
-    quickSupport: boolean
-}
-
+import { List } from './Interfases'
 export default class {
-    public static createBetOptions(buttonLabels: Array<string>, quickSupport: boolean = false, digitLabels?: Array<string>): Array<List> {
+    public static generatBetOptions(buttonLabels: Array<string>, quickSupport: boolean = false, digitLabels: Array<string> = ['']): Array<List> {
         let data: Array<List> = []
-
-        if (digitLabels) {
-            digitLabels.forEach((label: string) => data.push(this.generatList(buttonLabels, quickSupport, label)))
-        } else {
-            data.push(this.generatList(buttonLabels, quickSupport))
-        }
-
+        digitLabels.forEach((label: string) =>
+            data.push({
+                label: label,
+                options: buttonLabels,
+                selected: [],
+                quickSupport: quickSupport ? buttonLabels.length > 6 : false
+            })
+        )
         return data
     }
 
-    private static generatList(_options: Array<string>, _quickSupport: boolean, lableName?: string): List {
-        return {
-            label: lableName ? lableName : '',
-            options: _options,
-            selected: [],
-            quickSupport: _quickSupport ? _options.length > 6 : false
+    public static generatButtonNumbers(from: number, to: number, twoDigit: boolean): Array<string> {
+        var arr = Array<string>()
+        for (var i = from; i <= to; i++) {
+            if (twoDigit) {
+                var str = ('0' + i).slice(-2)
+                arr.push(str)
+            } else {
+                arr.push(String(i))
+            }
         }
+        return arr
     }
 }

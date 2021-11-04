@@ -1,5 +1,3 @@
-import BetOptionsGenerator from './BetOptionsGenerator'
-
 enum LOTTOERY_TYPE {
     时时彩 = 'ssc', // 时时彩
     快三 = 'k3', // 快三
@@ -12,7 +10,7 @@ export default class LotteryLib {
     constructor(category: string) {
         this.setLottery(category)
 
-        BetOptionsGenerator.createBetOptions(['6', '5', '4', '3', '2', '1'])
+        // BetOptionsGenerator.createBetOptions(['6', '5', '4', '3', '2', '1'])
     }
 
     public setLottery(category: string) {
