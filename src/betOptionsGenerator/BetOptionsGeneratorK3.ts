@@ -1,5 +1,4 @@
 import BetOptionsGenerator from './BetOptionsGenerator'
-// import { Combination } from 'js-combinatorics'
 
 export default class extends BetOptionsGenerator {
     public generatButtonNumbersErTongHao(): Array<string> {
@@ -26,10 +25,4 @@ export default class extends BetOptionsGenerator {
             }
         }
     }
-
-    // public test(): Array<string> {
-    //     const aa = new Combination('123456', 3)
-    //     console.log(aa)
-    //     return ['1', '1', '1', '1', '1', '1', '1', '1']
-    // }
 }
