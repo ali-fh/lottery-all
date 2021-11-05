@@ -20,6 +20,7 @@
         "types": ["node", "jest"] // 导入指定类型包
     },
     "include": [
-        "src/*" // 导入目录
+        "src/*", // 导入目录
+        "src/betOptionsGenerator/BetOptionsGenerator.ts"
     ]
 }

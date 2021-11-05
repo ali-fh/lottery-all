@@ -1,6 +1,6 @@
-import { List } from './Interfases'
+import { List } from '../Interfases'
 export default class {
-    public static generatBetOptions(buttonLabels: Array<string>, quickSupport: boolean = false, digitLabels: Array<string> = ['']): Array<List> {
+    public generatBetOptions(buttonLabels: Array<string>, quickSupport: boolean = false, digitLabels: Array<string> = ['']): Array<List> {
         let data: Array<List> = []
         digitLabels.forEach((label: string) =>
             data.push({
@@ -13,7 +13,7 @@ export default class {
         return data
     }
 
-    public static generatButtonNumbers(from: number, to: number, twoDigit: boolean): Array<string> {
+    public generatButtonNumbers(from: number, to: number, twoDigit: boolean): Array<string> {
         var arr = Array<string>()
         for (var i = from; i <= to; i++) {
             if (twoDigit) {
