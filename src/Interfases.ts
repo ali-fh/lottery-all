@@ -1,4 +1,4 @@
-export interface List {
+export interface OptionSection {
     // 标题
     label: string
     // 投注选项

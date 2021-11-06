@@ -1,22 +1,95 @@
-import BetOptionsGeneratorK3 from '../BetOptionsGenerator/BetOptionsGeneratorK3'
+import BetOptionsGenerator from '../optionsGenerators/BetOptionsGenerator'
 
-const OptionsGeneratorK3 = new BetOptionsGeneratorK3()
+const OptionsGenerator = new BetOptionsGenerator()
+const DANMA_TOUMA_ARRAY = ['胆码', '拖码']
+const YI_ER_SAN_ARRAY = ['一位', '二位', '三位']
 
 export default {
-    // 和值
-    'k3-k3-hezhi': { betOptions: OptionsGeneratorK3.generatBetOptions(OptionsGeneratorK3.generatButtonNumbers(3, 18, true), true) },
-    // 大小单双
-    'k3-k3-daxiaodanshuang': { betOptions: OptionsGeneratorK3.generatBetOptions(['大', '小', '单', '双']) },
-    // 三同号
-    'k3-k3-santonghao': { betOptions: OptionsGeneratorK3.generatBetOptions(['666', '555', '444', '333', '222', '111']) },
-    // 三不同号
-    'k3-k3-sanbutonghao': { betOptions: [] },
-    // 三连号
-    'k3-k3-sanlianhao': { betOptions: OptionsGeneratorK3.generatBetOptions(['123', '234', '345', '456']) },
-    // 二不同号
-    'k3-k3-erbutonghao': { betOptions: [] },
-    // 二同号
-    'k3-k3-ertonghao': { betOptions: OptionsGeneratorK3.generatBetOptions(OptionsGeneratorK3.generatButtonNumbersErTongHao()) },
-    // 单挑一骰
-    'k3-k3-dantiaoyishai': { betOptions: OptionsGeneratorK3.generatBetOptions(['6', '5', '4', '3', '2', '1']) }
+  'sanma-zhixuan-fushi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, YI_ER_SAN_ARRAY)
+  },
+  'erma-zhixuan-fushi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, YI_ER_SAN_ARRAY.slice(0, 2))
+  },
+  'sanma-zhixuan-danshi': {},
+  'erma-zhixuan-danshi': {},
+  'sanma-zuxuan-danshi': {},
+  'erma-zuxuan-danshi': {},
+  'sanma-zuxuan-fushi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'erma-zuxuan-fushi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'sanma-zuxuan-dantuo': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'erma-zuxuan-dantuo': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuaner': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuansan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuansi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuanwu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuanliu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuanqi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'renxuandantuo-renxuandantuo-renxuanba': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, DANMA_TOUMA_ARRAY)
+  },
+  'budingwei-budingwei-budingwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'dingweidan-dingweidan-dingweidan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true, YI_ER_SAN_ARRAY)
+  },
+  'quweixing-quweixing-dingdanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(['5单0双', '4单1双', '3单2双', '2单3双', '1单4双', '0单5双'], true)
+  },
+  'quweixing-quweixing-caizhongwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuanyi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuaner': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuansan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuansi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuanwu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuanliu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuanqi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuanfushi-renxuanfushi-renxuanba': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 11, true), true)
+  },
+  'renxuandanshi-renxuandanshi-renxuanyi': {},
+  'renxuandanshi-renxuandanshi-renxuaner': {},
+  'renxuandanshi-renxuandanshi-renxuansan': {},
+  'renxuandanshi-renxuandanshi-renxuansi': {},
+  'renxuandanshi-renxuandanshi-renxuanwu': {},
+  'renxuandanshi-renxuandanshi-renxuanliu': {},
+  'renxuandanshi-renxuandanshi-renxuanqi': {},
+  'renxuandanshi-renxuandanshi-renxuanba': {}
 }
