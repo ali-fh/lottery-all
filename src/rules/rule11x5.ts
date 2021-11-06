@@ -1,4 +1,4 @@
-import BetOptionsGenerator from '../optionsGenerators/BetOptionsGenerator'
+import BetOptionsGenerator from '../optionsGenerators/Generator'
 
 const OptionsGenerator = new BetOptionsGenerator()
 const DANMA_TOUMA_ARRAY = ['胆码', '拖码']

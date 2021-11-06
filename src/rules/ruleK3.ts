@@ -1,4 +1,4 @@
-import BetOptionsGeneratorK3 from '../optionsGenerators/BetOptionsGeneratorK3'
+import BetOptionsGeneratorK3 from '../optionsGenerators/GeneratorK3'
 
 const OptionsGenerator = new BetOptionsGeneratorK3()
 

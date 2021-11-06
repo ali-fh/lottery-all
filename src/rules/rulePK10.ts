@@ -1,4 +1,4 @@
-import BetOptionsGeneratorPK10 from '../optionsGenerators/BetOptionsGeneratorPK10'
+import BetOptionsGeneratorPK10 from '../optionsGenerators/GeneratorPK10'
 
 const OptionsGenerator = new BetOptionsGeneratorPK10()
 const TITLE_LABEL_ARRAY: string[] = ['冠军', '亚军', '第三', '第四', '第五', '第六', '第七', '第八', '第九', '第十']

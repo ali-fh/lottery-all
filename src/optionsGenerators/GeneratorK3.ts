@@ -1,4 +1,4 @@
-import BetOptionsGenerator from './BetOptionsGenerator'
+import BetOptionsGenerator from './Generator'
 
 const CONBITATION_SOURCE: number[] = [1, 2, 3, 4, 5, 6]
 

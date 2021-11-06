@@ -1,4 +1,4 @@
-import BetOptionsGenerator from './BetOptionsGenerator'
+import BetOptionsGenerator from './Generator'
 import { OptionSection } from '../Interfases'
 
 export default class extends BetOptionsGenerator {

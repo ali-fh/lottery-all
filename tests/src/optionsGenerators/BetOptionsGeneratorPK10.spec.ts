@@ -1,4 +1,4 @@
-import BetOptionsGeneratorPK10 from '../../../src/optionsGenerators/BetOptionsGeneratorPK10'
+import BetOptionsGeneratorPK10 from '../../../src/optionsGenerators/GeneratorPK10'
 import { OptionSection } from '../../../src/Interfases'
 
 const betOptionsGeneratorPK10 = new BetOptionsGeneratorPK10()
