@@ -1,7 +1,7 @@
-import BetOptionsGenerator from './Generator'
+import Generator from './Generator'
 import { OptionSection } from '../Interfases'
 
-export default class extends BetOptionsGenerator {
+export default class extends Generator {
   public getDragonWithTiger(labelArray: Array<string>): Array<OptionSection> {
     let data: OptionSection[] = []
 
@@ -18,5 +18,13 @@ export default class extends BetOptionsGenerator {
       data = data.concat(super.generatBetOptions(optionsArray, false, labelArray.slice(index, index + 1)))
     })
     return data
+  }
+
+  public generatBetOptionsPK10(titles?: Array<string>) {
+    if (titles) {
+      super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true, titles)
+    } else {
+      super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true)
+    }
   }
 }

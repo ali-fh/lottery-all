@@ -17,25 +17,25 @@ export default {
     betOptions: OptionsGenerator.getDragonWithTiger(TITLE_LABEL_ARRAY)
   },
   'caichehao-dingweidan-dingweidan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true)
+    betOptions: OptionsGenerator.generatBetOptionsPK10()
   },
   'budingwei-sanxingbudingwei-qiansan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, ['前三'])
+    betOptions: OptionsGenerator.generatBetOptionsPK10(['前三'])
   },
   'budingwei-sanxingbudingwei-housan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, ['后三'])
+    betOptions: OptionsGenerator.generatBetOptionsPK10(['后三'])
   },
   'caipaiwei-zhixuanpk-guanyajun': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, TITLE_LABEL_ARRAY.slice(0, 2))
+    betOptions: OptionsGenerator.generatBetOptionsPK10(TITLE_LABEL_ARRAY.slice(0, 2))
   },
   'caipaiwei-zhixuanpk-qiansanpk': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, TITLE_LABEL_ARRAY.slice(0, 3))
+    betOptions: OptionsGenerator.generatBetOptionsPK10(TITLE_LABEL_ARRAY.slice(0, 3))
   },
   'caipaiwei-zhixuanpk-qiansipk': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, TITLE_LABEL_ARRAY.slice(0, 4))
+    betOptions: OptionsGenerator.generatBetOptionsPK10(TITLE_LABEL_ARRAY.slice(0, 4))
   },
   'caipaiwei-zhixuanpk-qianwu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 10, false), true, TITLE_LABEL_ARRAY.slice(0, 5))
+    betOptions: OptionsGenerator.generatBetOptionsPK10(TITLE_LABEL_ARRAY.slice(0, 5))
   },
   'caipaiwei-zhixuanpk-pk10qiansandanshi': {},
   'caipaiwei-zhixuanpk-pk10qiansidanshi': {},

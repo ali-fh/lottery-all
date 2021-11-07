@@ -17,7 +17,7 @@ export default {
   },
   // 三不同号
   'k3-k3-sanbutonghao': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeSanBuTongHao())
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(3))
   },
   // 三连号
   'k3-k3-sanlianhao': {
@@ -25,7 +25,7 @@ export default {
   },
   // 二不同号
   'k3-k3-erbutonghao': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeErBuTongHao())
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(2))
   },
   // 二同号
   'k3-k3-ertonghao': {

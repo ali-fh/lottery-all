@@ -1,8 +1,6 @@
-import BetOptionsGenerator from './Generator'
+import Generator from './Generator'
 
-const CONBITATION_SOURCE: number[] = [1, 2, 3, 4, 5, 6]
-
-export default class extends BetOptionsGenerator {
+export default class extends Generator {
   public generatButtonNumbersErTongHao(): Array<string> {
     let data = Array<string>()
     for (let i = 1; i <= 6; i++) {
@@ -15,15 +13,11 @@ export default class extends BetOptionsGenerator {
     return data
   }
 
-  public getAllPailieZuHeErBuTongHao(): Array<string> {
-    let data: Array<string> = []
-    super.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, 2, data, '', false)
-    return data
-  }
+  public getAllPailieZuHeBuTongHaoWrapper(num: number): Array<string> {
+    const CONBITATION_SOURCE: number[] = [1, 2, 3, 4, 5, 6]
 
-  public getAllPailieZuHeSanBuTongHao(): Array<string> {
     let data: Array<string> = []
-    super.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, 3, data, '', false)
+    this.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, num, data, '', false)
     return data
   }
 }
