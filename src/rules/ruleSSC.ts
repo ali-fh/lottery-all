@@ -159,46 +159,126 @@ export default {
   'sixing-zuxuan-zuxuan4': {
     betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号'])
   },
-  'wuxing-zuxuan-zuxuan10': {},
-  'wuxing-zuxuan-zuxuan5': {},
-  'sixing-zuxuan-zuxuan6': {},
-  'qiansan-zuxuan-zusan': {},
-  'zhongsan-zuxuan-zusan': {},
-  'housan-zuxuan-zusan': {},
-  'qiansan-zuxuan-zuliu': {},
-  'zhongsan-zuxuan-zuliu': {},
-  'housan-zuxuan-zuliu': {},
-  'qiansan-zhixuan-hezhi': {},
-  'zhongsan-zhixuan-hezhi': {},
-  'housan-zhixuan-hezhi': {},
-  'erxing-zhixuan-houerhezhi': {},
-  'erxing-zhixuan-qianerhezhi': {},
-  'qiansan-zuxuan-hezhi': {},
-  'zhongsan-zuxuan-hezhi': {},
-  'housan-zuxuan-hezhi': {},
-  'erxing-zuxuan-houerhezhi': {},
-  'erxing-zuxuan-qianerhezhi': {},
-  'qiansan-zhixuan-kuadu': {},
-  'zhongsan-zhixuan-kuadu': {},
-  'housan-zhixuan-kuadu': {},
-  'erxing-zhixuan-houerkuadu': {},
-  'erxing-zhixuan-qianerkuadu': {},
-  'quwei-teshu-yifanfengshun': {},
-  'quwei-teshu-haoshichengshuang': {},
-  'quwei-teshu-sanxingbaoxi': {},
-  'quwei-teshu-sijifacai': {},
-  'budingwei-sanxingbudingwei-housanyimabudingwei': {},
-  'budingwei-sanxingbudingwei-qiansanyimabudingwei': {},
-  'budingwei-sanxingbudingwei-zhongsanyimabudingwei': {},
-  'budingwei-sixingbudingwei-sixingyimabudingwei': {},
-  'qiansan-zuxuan-baodan': {},
-  'zhongsan-zuxuan-baodan': {},
-  'housan-zuxuan-baodan': {},
-  'erxing-zuxuan-houerbaodan': {},
-  'erxing-zuxuan-qianerbaodan': {},
-  'qiansan-qita-hezhiweishu': {},
-  'zhongsan-qita-hezhiweishu': {},
-  'housan-qita-hezhiweishu': {},
+  'wuxing-zuxuan-zuxuan10': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号'])
+  },
+  'wuxing-zuxuan-zuxuan5': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '二重号'])
+  },
+  'sixing-zuxuan-zuxuan6': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['四重号', '单号'])
+  },
+  'qiansan-zuxuan-zusan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号'])
+  },
+  'zhongsan-zuxuan-zusan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'housan-zuxuan-zusan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'qiansan-zuxuan-zuliu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'zhongsan-zuxuan-zuliu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'housan-zuxuan-zuliu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'qiansan-zhixuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true)
+  },
+  'zhongsan-zhixuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true)
+  },
+  'housan-zhixuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true)
+  },
+  'erxing-zhixuan-houerhezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 18, false), true)
+  },
+  'erxing-zhixuan-qianerhezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 18, false), true)
+  },
+  'qiansan-zuxuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true)
+  },
+  'zhongsan-zuxuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true)
+  },
+  'housan-zuxuan-hezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true)
+  },
+  'erxing-zuxuan-houerhezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 17, false), true)
+  },
+  'erxing-zuxuan-qianerhezhi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 17, false), true)
+  },
+  'qiansan-zhixuan-kuadu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'zhongsan-zhixuan-kuadu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'housan-zhixuan-kuadu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'erxing-zhixuan-houerkuadu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'erxing-zhixuan-qianerkuadu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'quwei-teshu-yifanfengshun': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'quwei-teshu-haoshichengshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'quwei-teshu-sanxingbaoxi': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'quwei-teshu-sijifacai': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'budingwei-sanxingbudingwei-housanyimabudingwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'budingwei-sanxingbudingwei-qiansanyimabudingwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'budingwei-sanxingbudingwei-zhongsanyimabudingwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'budingwei-sixingbudingwei-sixingyimabudingwei': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'qiansan-zuxuan-baodan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false))
+  },
+  'zhongsan-zuxuan-baodan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false))
+  },
+  'housan-zuxuan-baodan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false))
+  },
+  'erxing-zuxuan-houerbaodan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false))
+  },
+  'erxing-zuxuan-qianerbaodan': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false))
+  },
+  'qiansan-qita-hezhiweishu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'zhongsan-qita-hezhiweishu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
+  'housan-qita-hezhiweishu': {
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+  },
   'qiansan-qita-teshuhaoma': {},
   'zhongsan-qita-teshuhaoma': {},
   'housan-qita-teshuhaoma': {},

@@ -20,11 +20,11 @@ export default class extends Generator {
     return data
   }
 
-  public generatBetOptionsPK10(titles?: Array<string>) {
+  public generatBetOptionsPK10(titles?: Array<string>): Array<OptionSection> {
     if (titles) {
-      super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true, titles)
+      return super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true, titles)
     } else {
-      super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true)
+      return super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true)
     }
   }
 }
