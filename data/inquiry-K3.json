@@ -1,0 +1,50 @@
+{
+  "k3-k3-hezhi": {
+    "is_enable_extra": true,
+    "multiple": 25667,
+    "extra": {
+      "3": 950,
+      "4": 2851,
+      "5": 5703,
+      "6": 9506,
+      "7": 14259,
+      "8": 19963,
+      "9": 23766,
+      "10": 25667,
+      "11": 25667,
+      "12": 23766,
+      "13": 19963,
+      "14": 14259,
+      "15": 9506,
+      "16": 5703,
+      "17": 2851,
+      "18": 950
+    },
+    "extra_prize": {
+      "3": "420.7680",
+      "4": "140.2560",
+      "5": "70.1280",
+      "6": "42.0768",
+      "7": "28.0512",
+      "8": "20.0365",
+      "9": "16.8307",
+      "10": "15.5840",
+      "11": "15.5840",
+      "12": "16.8307",
+      "13": "20.0365",
+      "14": "28.0512",
+      "15": "42.0768",
+      "16": "70.1280",
+      "17": "140.2560",
+      "18": "420.7680"
+    },
+    "prize": "15.5840"
+  },
+  "k3-k3-daxiaodanshuang": { "is_enable_extra": false, "multiple": 102669, "prize": "3.8960" },
+  "k3-k3-santonghao": { "is_enable_extra": false, "multiple": 950, "prize": "420.7680" },
+  "k3-k3-ertonghao": { "is_enable_extra": false, "multiple": 2851, "prize": "140.2560" },
+  "k3-k3-sanbutonghao": { "is_enable_extra": false, "multiple": 5703, "prize": "70.1280" },
+  "k3-k3-erbutonghao": { "is_enable_extra": false, "multiple": 28519, "prize": "14.0256" },
+  "k3-k3-sanlianhao": { "is_enable_extra": false, "multiple": 5703, "prize": "70.1280" },
+  "k3-k3-dantiaoyishai": { "is_enable_extra": false, "multiple": 86507, "prize": "4.6239" }
+}

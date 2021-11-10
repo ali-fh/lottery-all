@@ -3,6 +3,7 @@ import BetOptionsGenerator from '../optionsGenerators/Generator'
 const OptionsGenerator = new BetOptionsGenerator()
 
 const DIGIT_ARRAY = ['万位', '千位', '百位', '十位', '个位']
+const DA_XIAO_DAN_XHUANG_ARRAY = ['大', '小', '单', '双']
 
 export default {
   'yixing-dingweidan-fushi': {
@@ -279,15 +280,33 @@ export default {
   'housan-qita-hezhiweishu': {
     betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
   },
-  'qiansan-qita-teshuhaoma': {},
-  'zhongsan-qita-teshuhaoma': {},
-  'housan-qita-teshuhaoma': {},
-  'hezhi-wuxing-bsde': {},
-  'daxiaodanshuang-daxiaodanshuang-houerdaxiaodanshuang': {},
-  'daxiaodanshuang-daxiaodanshuang-housandaxiaodanshuang': {},
-  'daxiaodanshuang-daxiaodanshuang-qianerdaxiaodanshuang': {},
-  'daxiaodanshuang-daxiaodanshuang-qiansandaxiaodanshuang': {},
-  'daxiaodanshuang-daxiaodanshuang-zhongsandaxiaodanshuang': {},
+  'qiansan-qita-teshuhaoma': {
+    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子'])
+  },
+  'zhongsan-qita-teshuhaoma': {
+    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子'])
+  },
+  'housan-qita-teshuhaoma': {
+    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子'])
+  },
+  'hezhi-wuxing-bsde': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY)
+  },
+  'daxiaodanshuang-daxiaodanshuang-houerdaxiaodanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(3))
+  },
+  'daxiaodanshuang-daxiaodanshuang-housandaxiaodanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(2))
+  },
+  'daxiaodanshuang-daxiaodanshuang-qianerdaxiaodanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 2))
+  },
+  'daxiaodanshuang-daxiaodanshuang-qiansandaxiaodanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 3))
+  },
+  'daxiaodanshuang-daxiaodanshuang-zhongsandaxiaodanshuang': {
+    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(1, 4))
+  },
   'quwei-quwei-wumaquweisanxing': {},
   'quwei-quwei-simaquweisanxing': {},
   'quwei-quwei-housanquweierxing': {},

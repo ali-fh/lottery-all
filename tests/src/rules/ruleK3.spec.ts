@@ -15,7 +15,16 @@ describe.each(['k3-k3-hezhi', 'k3-k3-daxiaodanshuang', 'k3-k3-santonghao', 'k3-k
     'k3-k3-ertonghao': arr1.concat(arr2),
     'k3-k3-dantiaoyishai': ['6', '5', '4', '3', '2', '1']
   }
-  test(`应为[${obj[name]}]`, () => {
+  test(`下著选项应为[${obj[name]}]`, () => {
     expect(rule[name].betOptions[0].options).toStrictEqual(obj[name])
   })
+})
+
+test(`encoder`, () => {
+  expect(rule['k3-k3-daxiaodanshuang'].encode('大')).toBe(1)
+})
+
+test(`encoder`, () => {
+  expect(rule['k3-k3-daxiaodanshuang'].decode(1)).toBe('大')
+  expect(rule['k3-k3-daxiaodanshuang'].decode(5)).toBe('5')
 })

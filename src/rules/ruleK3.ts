@@ -1,7 +1,7 @@
 import BetOptionsGeneratorK3 from '../optionsGenerators/GeneratorK3'
+import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 
 const OptionsGenerator = new BetOptionsGeneratorK3()
-
 export default {
   // 和值
   'k3-k3-hezhi': {
@@ -9,7 +9,9 @@ export default {
   },
   // 大小单双
   'k3-k3-daxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(['大', '小', '单', '双'])
+    betOptions: OptionsGenerator.generatBetOptions(['大', '小', '单', '双']),
+    encode: DaXiaoDanShuangEncode,
+    decode: DaXiaoDanShuangDecode
   },
   // 三同号
   'k3-k3-santonghao': {
