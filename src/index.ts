@@ -4,7 +4,7 @@ import ruleSSC from '../src/rules/ruleSSC'
 import rulePK10 from '../src/rules/rulePK10'
 import rule11x5 from '../src/rules/rule11x5'
 
-import cloneDeep from 'lodash.clonedeep'
+import { cloneDeep } from 'lodash'
 
 enum LOTTOERY_TYPE {
   时时彩 = 'ssc', // 时时彩
