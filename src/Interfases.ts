@@ -11,16 +11,13 @@ export interface OptionSection {
 
 export interface ProfitParams {
   // 单注奖金金额
-  prize: number
+  prize: any
   // 金额单位
   amountUnit: number
   // 下注倍数
   beishu: number
   // 下注金额
   betAmt: number
-}
 
-export interface extraProfitParams extends ProfitParams {
   betCount?: number
-  extraPrize?: any
 }

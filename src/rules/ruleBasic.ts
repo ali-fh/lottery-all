@@ -1,4 +1,4 @@
-import ProfitCalculator from '../ProfitCalculator'
+import ProfitCalculator from '../profitCalculators/Calculator'
 import { ProfitParams } from '../Interfases'
 
 export default {

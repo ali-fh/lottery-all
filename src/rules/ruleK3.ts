@@ -1,11 +1,18 @@
 import BetOptionsGeneratorK3 from '../optionsGenerators/GeneratorK3'
+import CalculatorK3 from '../profitCalculators/CalculatorK3'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
+import { ProfitParams } from '../Interfases'
 
 const OptionsGenerator = new BetOptionsGeneratorK3()
+const ProfitCalculator = new CalculatorK3()
+
 export default {
   // 和值
   'k3-k3-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(3, 18, true), true)
+    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(3, 18, true), true),
+    getProfit: function (params: ProfitParams): string {
+      return ProfitCalculator.getProfitHeZhi(params, this.betOptions[0].selected)
+    }
   },
   // 大小单双
   'k3-k3-daxiaodanshuang': {
@@ -35,6 +42,7 @@ export default {
   },
   // 单挑一骰
   'k3-k3-dantiaoyishai': {
-    betOptions: OptionsGenerator.generatBetOptions(['6', '5', '4', '3', '2', '1'])
+    betOptions: OptionsGenerator.generatBetOptions(['6', '5', '4', '3', '2', '1']),
+    getProfit: (data: ProfitParams): string => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3 })
   }
 }
