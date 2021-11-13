@@ -13,4 +13,4 @@ function decode(key: number): string {
   return DaXiaoDanShuang[key] || String(key)
 }
 
-export { encode, decode }
+export { encode, decode, DaXiaoDanShuang }
