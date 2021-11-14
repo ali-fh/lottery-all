@@ -43,7 +43,7 @@ export default class {
     }
   }
 
-  profitTypeC(params: ProfitParams, test: Test[], limit: number, position: number): string {
+  profitTypeB(params: ProfitParams, test: Test[], limit: number, position: number): string {
     const basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
 
     if (position <= limit) {

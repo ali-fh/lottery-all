@@ -50,7 +50,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeCWrapper.call(this, data)
+      return Calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'liangmianpan-zhixuan-dragonwithtiger': {
@@ -66,7 +66,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeCWrapper.call(this, data)
+      return Calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'caichehao-dingweidan-dingweidan': {
@@ -77,7 +77,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeCWrapper.call(this, data)
+      return Calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'budingwei-sanxingbudingwei-qiansan': {

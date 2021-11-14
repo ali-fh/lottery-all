@@ -273,7 +273,7 @@ export default {
       this.betOptions.forEach((element: OptionSection) => {
         if (element.selected.length) position++
       })
-      return ProfitCalculator.profitTypeC(data, [{ 1: 1 }, { 1: 2 }, { 1: 3 }], 1, position)
+      return ProfitCalculator.profitTypeB(data, [{ 1: 1 }, { 1: 2 }, { 1: 3 }], 1, position)
     }
   },
   'quweixing-quweixing-dingdanshuang': {

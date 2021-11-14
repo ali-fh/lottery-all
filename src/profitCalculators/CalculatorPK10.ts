@@ -20,12 +20,12 @@ export default class extends Calculator {
     }
   }
 
-  public profitTypeCWrapper(this: any, data: ProfitParams) {
+  public profitTypeBWrapper(this: any, data: ProfitParams) {
     let position: number = 0
     let test = [{ '1': 1 }, { '1': 2 }, { '1': 3 }, { '1': 4 }, { '1': 5 }, { '1': 6 }, { '1': 7 }, { '1': 8 }, { '1': 9 }, { '1': 10 }]
     this.list.forEach((element: OptionSection) => {
       if (element.selected.length) position++
     })
-    return super.profitTypeC(data, test, 1, position)
+    return super.profitTypeB(data, test, 1, position)
   }
 }
