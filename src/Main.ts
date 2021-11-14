@@ -1,8 +1,8 @@
-import ruleBasic from '../src/rules/ruleBasic'
-import ruleK3 from '../src/rules/ruleK3'
-import ruleSSC from '../src/rules/ruleSSC'
-import rulePK10 from '../src/rules/rulePK10'
-import rule11x5 from '../src/rules/rule11x5'
+import ruleBasic from './rules/ruleBasic'
+import ruleK3 from './rules/ruleK3'
+import ruleSSC from './rules/ruleSSC'
+import rulePK10 from './rules/rulePK10'
+import rule11x5 from './rules/rule11x5'
 
 import { cloneDeep } from 'lodash'
 
@@ -12,7 +12,7 @@ enum LOTTOERY_TYPE {
   PK10 = 'pk10',
   十一选五 = 'l115'
 }
-export default class LotteryLib {
+export default class {
   public currentLotteryType: any = ''
   public currentRule: { [propName: string]: any } = {}
 

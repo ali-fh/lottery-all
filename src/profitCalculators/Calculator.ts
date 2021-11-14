@@ -1,9 +1,5 @@
 import Util from '../Util'
-import { ProfitParams } from '../Interfases'
-
-interface Test {
-  [propName: string]: number
-}
+import { ProfitParams, Test } from '../Interfases'
 
 export default class {
   // private basicProfit: string = ''

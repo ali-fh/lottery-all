@@ -21,3 +21,7 @@ export interface ProfitParams {
 
   betCount?: number
 }
+
+export interface Test {
+  [propName: string]: number
+}

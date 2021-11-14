@@ -45,22 +45,4 @@ export default class {
     }
     return false
   }
-
-  /** 检测字符串数组中，重复最大值 */
-  public static getMaxRepeatNumFormStr(str: string) {
-    var max = 0
-    for (var i = 0; i < str.length; i++) {
-      var num = this.judgeCharRepeatNum(str, str[i])
-      max = max < num ? num : max
-    }
-    return max
-  }
-
-  /** 检测某个字符串出现的次数 */
-  public static judgeCharRepeatNum(str: string, char: string) {
-    var regex = new RegExp(char, 'g')
-    var result = str.match(regex)
-    var count = !result ? 0 : result.length
-    return count
-  }
 }
