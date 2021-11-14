@@ -1,9 +1,9 @@
 import BetOptionsGeneratorPK10 from '../optionsGenerators/GeneratorPK10'
 import CalculatorPK10 from '../profitCalculators/CalculatorPK10'
-import getInputDanshi from '../getInputDanshi'
 
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { OptionSection, ProfitParams } from 'src/Interfases'
+import DanshiInput from '../DanshiInput'
 
 const OptionsGenerator = new BetOptionsGeneratorPK10()
 const Calculator = new CalculatorPK10()
@@ -131,7 +131,7 @@ export default {
     rule: '输入（1-10）任意不同3个号码为1注,与开奖号码前三位相同且顺序一致,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 10',
     getInput: function (input: string) {
-      return getInputDanshi.call(this, input, 10)
+      return DanshiInput.getInput.call(this, input, 10)
     },
     noRepeat: true,
     noBaozi: true
@@ -143,7 +143,7 @@ export default {
     rule: '输入（1-10）任意不同4个号码为1注,与开奖号码前四位相同且顺序一致,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04|03 04 05 07|07 08 09 10',
     getInput: function (input: string) {
-      return getInputDanshi.call(this, input, 10)
+      return DanshiInput.getInput.call(this, input, 10)
     },
     noRepeat: true,
     noBaozi: true
@@ -155,7 +155,7 @@ export default {
     rule: '输入（1-10）任意不同5个号码为1注,与开奖号码前五位相同且顺序一致,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05|03 04 05 07 08|06 07 08 09 10',
     getInput: function (input: string) {
-      return getInputDanshi.call(this, input, 10)
+      return DanshiInput.getInput.call(this, input, 10)
     },
     noRepeat: true,
     noBaozi: true
