@@ -263,10 +263,7 @@ export default {
   'dingweidan-dingweidan-dingweidan': {
     betOptions: OptionsGenerator.generatBetOptions11x5(YI_ER_SAN_ARRAY),
     betCount: function () {
-      var total = this.betOptions.reduce(function (sum: number, element: OptionSection) {
-        return sum + element.selected.length
-      }, 0)
-      return total
+      return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
       let position = 0

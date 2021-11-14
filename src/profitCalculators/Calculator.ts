@@ -2,15 +2,7 @@ import Util from '../Util'
 import { ProfitParams, Test } from '../Interfases'
 
 export default class {
-  // private basicProfit: string = ''
-  // private maxProfit: string = ''
-  // private profitParams: ProfitParams
   private MAXIMUN: number = 400000
-
-  // constructor(params: ProfitParams) {
-  //   this.profitParams = params
-  //   this.basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
-  // }
 
   getMaximunProfit(profit: number, params: ProfitParams): string {
     if (profit >= this.MAXIMUN) {
@@ -21,8 +13,7 @@ export default class {
   }
 
   profitBasic(params: ProfitParams): string {
-    const profit: number = params.prize * params.amountUnit * params.beishu
-    return this.getMaximunProfit(profit, params)
+    return this.getMaximunProfit(params.prize * params.amountUnit * params.beishu, params)
   }
 
   profitTypeA(params: ProfitParams, test: Test): string {
