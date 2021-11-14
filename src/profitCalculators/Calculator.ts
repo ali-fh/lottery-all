@@ -13,7 +13,7 @@ export default class {
 
   // constructor(params: ProfitParams) {
   //   this.profitParams = params
-  //   this.basicProfit = toFixed(params.prizeAmt * params.amountUnit * params.beishu - params.betAmt, 2)
+  //   this.basicProfit = toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
   // }
 
   getMaximunProfit(profit: number, params: ProfitParams): string {
@@ -47,7 +47,13 @@ export default class {
     }
   }
 
-  // profitTypeB(): string {
-  //   return `${this.basicProfit} ~ ${this.getMaximunProfit(this.profitParams.prizeAmt * this.profitParams.amountUnit * this.profitParams.beishu)}`
-  // }
+  profitTypeC(params: ProfitParams, test: Test[], limit: number, position: number): string {
+    const basicProfit = toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+    if (position <= limit) {
+      return params.betCount === 0 ? '0' : basicProfit
+    } else {
+      let maxProfit: string = this.getMaximunProfit(params.prize * test[position - 1][1] * params.amountUnit * params.beishu, params)
+      return `${basicProfit} ~ ${maxProfit}`
+    }
+  }
 }
