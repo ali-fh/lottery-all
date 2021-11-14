@@ -1,4 +1,4 @@
-import { toFixed } from '../utils'
+import Util from '../Util'
 import { ProfitParams } from '../Interfases'
 import Calculator from './Calculator'
 
@@ -13,11 +13,11 @@ export default class extends Calculator {
       return a - b
     })
 
-    const basicProfit: string = toFixed(arr[0] * params.amountUnit * params.beishu - params.betAmt, 2)
+    const basicProfit: string = Util.toFixed(arr[0] * params.amountUnit * params.beishu - params.betAmt, 2)
     if (selectedArr.length === 1) {
       return basicProfit
     } else {
-      return `${basicProfit} ~ ${toFixed(arr[arr.length - 1] * params.amountUnit * params.beishu - params.betAmt, 2)}`
+      return `${basicProfit} ~ ${Util.toFixed(arr[arr.length - 1] * params.amountUnit * params.beishu - params.betAmt, 2)}`
     }
   }
 }

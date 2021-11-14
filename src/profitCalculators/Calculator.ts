@@ -1,4 +1,4 @@
-import { toFixed } from '../utils'
+import Util from '../Util'
 import { ProfitParams } from '../Interfases'
 
 interface Test {
@@ -13,14 +13,14 @@ export default class {
 
   // constructor(params: ProfitParams) {
   //   this.profitParams = params
-  //   this.basicProfit = toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+  //   this.basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
   // }
 
   getMaximunProfit(profit: number, params: ProfitParams): string {
     if (profit >= this.MAXIMUN) {
-      return toFixed(this.MAXIMUN * params.amountUnit - params.betAmt, 2)
+      return Util.toFixed(this.MAXIMUN * params.amountUnit - params.betAmt, 2)
     } else {
-      return toFixed(profit - params.betAmt, 2)
+      return Util.toFixed(profit - params.betAmt, 2)
     }
   }
 
@@ -30,7 +30,7 @@ export default class {
   }
 
   profitTypeA(params: ProfitParams, test: Test): string {
-    const basicProfit = toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+    const basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
 
     if (params.betCount === 1) {
       return basicProfit
@@ -48,7 +48,8 @@ export default class {
   }
 
   profitTypeC(params: ProfitParams, test: Test[], limit: number, position: number): string {
-    const basicProfit = toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+    const basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+
     if (position <= limit) {
       return params.betCount === 0 ? '0' : basicProfit
     } else {
