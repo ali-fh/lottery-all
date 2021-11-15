@@ -1,6 +1,8 @@
+import Conbinations from '../../../src/Conbination'
 import BetOptionsGeneratorK3 from '../../../src/optionsGenerators/GeneratorK3'
 
 const betOptionsGenerator = new BetOptionsGeneratorK3()
+const Conbination = new Conbinations()
 
 it('生成2同号数组', () => {
   const result: Array<string> = betOptionsGenerator.generatButtonNumbersErTongHao()
@@ -10,11 +12,11 @@ it('生成2同号数组', () => {
 })
 
 it('生成2不同号数组', () => {
-  const result: Array<string> = betOptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(2)
+  const result: Array<string> = Conbination.getAllPailieZuHeBuTongHaoWrapper(2)
   expect(result).toEqual(['12', '13', '14', '15', '16', '23', '24', '25', '26', '34', '35', '36', '45', '46', '56'])
 })
 
 it('生成3不同号数组', () => {
-  const result: Array<string> = betOptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(3)
+  const result: Array<string> = Conbination.getAllPailieZuHeBuTongHaoWrapper(3)
   expect(result).toEqual(['123', '124', '125', '126', '134', '135', '136', '145', '146', '156', '234', '235', '236', '245', '246', '256', '345', '346', '356', '456'])
 })

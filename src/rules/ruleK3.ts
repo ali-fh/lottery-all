@@ -2,9 +2,11 @@ import BetOptionsGeneratorK3 from '../optionsGenerators/GeneratorK3'
 import CalculatorK3 from '../profitCalculators/CalculatorK3'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { ProfitParams } from '../Interfases'
+import Conbinations from '../Conbination'
 
 const OptionsGenerator = new BetOptionsGeneratorK3()
 const ProfitCalculator = new CalculatorK3()
+const Conbination = new Conbinations()
 
 export default {
   // 和值
@@ -26,7 +28,7 @@ export default {
   },
   // 三不同号
   'k3-k3-sanbutonghao': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(3))
+    betOptions: OptionsGenerator.generatBetOptions(Conbination.getAllPailieZuHeBuTongHaoWrapper(3))
   },
   // 三连号
   'k3-k3-sanlianhao': {
@@ -34,7 +36,7 @@ export default {
   },
   // 二不同号
   'k3-k3-erbutonghao': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.getAllPailieZuHeBuTongHaoWrapper(2))
+    betOptions: OptionsGenerator.generatBetOptions(Conbination.getAllPailieZuHeBuTongHaoWrapper(2))
   },
   // 二同号
   'k3-k3-ertonghao': {

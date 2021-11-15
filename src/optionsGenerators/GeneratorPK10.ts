@@ -27,18 +27,4 @@ export default class extends Generator {
       return super.generatBetOptions(super.generatButtonNumbers(1, 10, false), true)
     }
   }
-
-  public getAllPailieZuheGuanYa(data: any, len: number, numArr: any, arr: any) {
-    for (var i = 0; i < data[len].length; i++) {
-      if (len === 0) {
-        if (!arr.includes(data[len][i])) numArr.push(arr.concat([data[len][i]]))
-      } else {
-        if (arr.includes(data[len][i])) {
-          continue
-        } else {
-          this.getAllPailieZuheGuanYa(data, len - 1, numArr, arr.concat([data[len][i]]))
-        }
-      }
-    }
-  }
 }

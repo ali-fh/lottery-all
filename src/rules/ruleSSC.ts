@@ -5,10 +5,11 @@ import Util from '../Util'
 import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/LongHuHe'
-import Conbination from 'src/Conbination'
+import Conbinations from 'src/Conbination'
 
 const OptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new CalculatorSSC()
+const Conbination = new Conbinations()
 
 const DIGIT_ARRAY = ['万位', '千位', '百位', '十位', '个位']
 const DA_XIAO_DAN_XHUANG_ARRAY = ['大', '小', '单', '双']
@@ -29,36 +30,6 @@ enum DaXiao {
   '大(5-9)'
 }
 
-/** 获取几个数组的任选排列 */
-function getPailieByRenxuanArr(sumArr: Array<any>, len: number) {
-  if (sumArr.length < len) return 0
-  var numArr: Array<string> = []
-  getAllPailieZuheListNew(sumArr, len, numArr, '', false)
-  var total = 0
-  numArr.forEach(function (element) {
-    var arr = element.split(',')
-    var sum = 1
-    arr.forEach(function (element) {
-      sum = sum * Number(element)
-    })
-    total = total + sum
-  })
-  return total
-}
-
-/** 获取几个数字的所有排列组合 */
-function getAllPailieZuheListNew(data: Array<string>, len: number, numArr: Array<string>, str: string, isRepeat = false) {
-  for (var i = 0; i < data.length; i++) {
-    if (len === 1) {
-      numArr.push(str + data[i])
-    } else {
-      var newData = data.concat()
-      if (!isRepeat) newData.splice(0, i + 1)
-      getAllPailieZuheListNew(newData, len - 1, numArr, str + data[i] + ',', isRepeat)
-    }
-  }
-}
-
 function getPailieByRenxuan(this: any, num: number) {
   var sum: Array<number> = []
   this.betOptions.forEach((element: any) => {
@@ -66,7 +37,7 @@ function getPailieByRenxuan(this: any, num: number) {
       sum.push(element.selected.length)
     }
   })
-  return getPailieByRenxuanArr(sum, num)
+  return Conbination.getPailieByRenxuanArr(sum, num)
 }
 
 function positionBet(num: number, position: Array<number>, limit: number) {
