@@ -1,3 +1,4 @@
+import Conbination from '../../src/Conbination'
 import Generator from './Generator'
 
 export default class extends Generator {
@@ -17,7 +18,7 @@ export default class extends Generator {
     const CONBITATION_SOURCE: number[] = [1, 2, 3, 4, 5, 6]
 
     let data: Array<string> = []
-    this.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, num, data, '', false)
+    Conbination.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, num, data, '', false)
     return data
   }
 }

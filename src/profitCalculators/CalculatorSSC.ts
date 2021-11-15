@@ -42,7 +42,6 @@ export default class extends Calculator {
   }
 
   profitTypeE(params: ProfitParams, basicProfit: string) {
-    // toFixed_New(data.extraPrize[0] * data.amountUnit * data.beishu - data.betAmt
     let maxProfit: string = super.getMaximunProfit(params.prize * params.amountUnit * params.beishu, params)
     return `${basicProfit} ~ ${maxProfit}`
   }

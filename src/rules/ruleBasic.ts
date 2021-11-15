@@ -4,18 +4,10 @@ import DanshiInput from 'src/DanshiInput'
 
 export default {
   betOptions: [],
-  getProfit: (data: ProfitParams) => {
-    return new ProfitCalculator().profitBasic(data)
-  },
-  encode: function (key: string) {
-    return key
-  },
-  decode: function (key: number) {
-    return key
-  },
-  betCount: function (num: number) {
-    return num
-  },
+  getProfit: (data: ProfitParams) => new ProfitCalculator().profitBasic(data),
+  encode: (key: string) => key,
+  decode: (key: string) => key,
+  betCount: (num: number) => num,
   getInput: function (input: string) {
     return DanshiInput.getInputSSC.call(this, input)
   }

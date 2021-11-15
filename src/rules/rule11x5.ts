@@ -3,6 +3,7 @@ import { OptionSection, ProfitParams } from 'src/Interfases'
 import BetOptionsGenerator11x5 from '../optionsGenerators/Generator11x5'
 import Calculator from '../profitCalculators/Calculator11x5'
 import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
+import Conbination from 'src/Conbination'
 
 const OptionsGenerator = new BetOptionsGenerator11x5()
 const ProfitCalculator = new Calculator()
@@ -63,7 +64,7 @@ function getAllPailieZuheListWrapper(this: any, limit: number): number {
   var arr = this.list[0].selected
   if (arr.length < limit) return 0
   var numArr: string[] = []
-  OptionsGenerator.getAllPailieZuHeBuTongHao(arr, limit, numArr, '', false)
+  Conbination.getAllPailieZuHeBuTongHao(arr, limit, numArr, '', false)
   return numArr.length
 }
 
@@ -73,7 +74,7 @@ function getAllPailieZuheList_danmatuoma(danma: string[], tuoma: string[], len: 
   if (!tuoma.length) return 0
   if (danma.length + tuoma.length < len) return 0
   var arr: string[] = []
-  OptionsGenerator.getAllPailieZuHeBuTongHao(tuoma, len - danma.length, arr, '', false)
+  Conbination.getAllPailieZuHeBuTongHao(tuoma, len - danma.length, arr, '', false)
   return arr.length
 }
 

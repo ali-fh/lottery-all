@@ -12,7 +12,7 @@ export default class {
       var isFuhebiaozhun: boolean = newArr.every(function (ele: string) {
         return Number(ele) <= limit && Number(ele) >= 1 && ele.length === 2
       })
-      if (noRepeat && Validator.judgeChongfu(newArr)) {
+      if (noRepeat && Validator.hasDuplicates(newArr)) {
         continue
       }
       if (noBaozi && Validator.judgeBaozi(newArr, this.betCount() - 1)) {

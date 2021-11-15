@@ -18,24 +18,11 @@ export default class {
     var data = Array<string>()
     for (var i = from; i <= to; i++) {
       if (doubleDigit) {
-        var str = ('0' + i).slice(-2)
-        data.push(str)
+        data.push(('0' + i).slice(-2))
       } else {
         data.push(String(i))
       }
     }
     return data
-  }
-
-  public getAllPailieZuHeBuTongHao(data: any, len: number, numArr: any, prefix: string | number, isRepeat: boolean = false) {
-    for (var i = 0; i < data.length; i++) {
-      if (len === 1) {
-        numArr.push(prefix + data[i])
-      } else {
-        var newData = data.concat()
-        if (!isRepeat) newData.splice(0, i + 1)
-        this.getAllPailieZuHeBuTongHao(newData, len - 1, numArr, prefix + data[i], isRepeat)
-      }
-    }
   }
 }

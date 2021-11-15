@@ -1,19 +1,6 @@
 export default class {
   /** 判断是否有重复 */
-  public static judgeChongfu(arr: string[]) {
-    for (var i = 0; i < arr.length; i++) {
-      var newTotal = 0
-      arr.forEach(function (ele) {
-        if (ele === arr[i]) {
-          newTotal++
-        }
-      })
-      if (newTotal > 1) {
-        return true
-      }
-    }
-    return false
-  }
+  public static hasDuplicates = (arr: string[]): boolean => new Set(arr).size < arr.length
 
   /** 判断是否有豹子 */
   public static judgeBaozi(arr: string[], max: number) {

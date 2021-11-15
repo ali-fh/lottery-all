@@ -5,6 +5,7 @@ import Util from '../Util'
 import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/LongHuHe'
+import Conbination from 'src/Conbination'
 
 const OptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new CalculatorSSC()
@@ -80,7 +81,7 @@ function positionBet(num: number, position: Array<number>, limit: number) {
 function getPailieByNoLabel(num: number, len: number) {
   if (num < len) return 0
   var numArr: Array<string> = []
-  OptionsGenerator.getAllPailieZuHeBuTongHao(Array(num).fill(1), len, numArr, '', false)
+  Conbination.getAllPailieZuHeBuTongHao(Array(num).fill(1), len, numArr, '', false)
   return numArr.length
 }
 
@@ -89,7 +90,7 @@ function getPailieSumOfHezhi(data: any, limit: number, sum: number) {
   var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   var numArr: Array<number> = []
   var total = 0
-  OptionsGenerator.getAllPailieZuHeBuTongHao(arr, limit, numArr, sum, true)
+  Conbination.getAllPailieZuHeBuTongHao(arr, limit, numArr, sum, true)
   for (var i = 0, len = data.length; i < len; i++) {
     numArr.forEach(function (ele: number) {
       if (ele === Number(data[i])) {
@@ -158,7 +159,7 @@ function getAllPailieZuheListNoBaozi(data: Array<any>, len: number, sumArr: Arra
 function getPailieOfErchonghaoDanhao(minArr: Array<string>, maxArr: Array<string>, limit: number) {
   if (maxArr.length < limit || minArr.length === 0) return 0
   var numArr: Array<string> = []
-  OptionsGenerator.getAllPailieZuHeBuTongHao(maxArr, limit, numArr, '', false)
+  Conbination.getAllPailieZuHeBuTongHao(maxArr, limit, numArr, '', false)
   var total = 0
   for (var i = 0, len = minArr.length; i < len; i++) {
     var sum = 0
@@ -176,7 +177,7 @@ function getPailieOfErchonghaoDanhao(minArr: Array<string>, maxArr: Array<string
 function getPailieOfErchonghaoSingle(data: Array<string>, limit: number) {
   if (data.length < limit) return 0
   var numArr: Array<string> = []
-  OptionsGenerator.getAllPailieZuHeBuTongHao(data, limit, numArr, '', false)
+  Conbination.getAllPailieZuHeBuTongHao(data, limit, numArr, '', false)
   return numArr.length
 }
 
