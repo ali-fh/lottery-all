@@ -1,11 +1,11 @@
 import DanshiInput from 'src/DanshiInput'
 import { OptionSection, ProfitParams } from 'src/Interfases'
-import BetOptionsGenerator11x5 from '../optionsGenerators/Generator11x5'
+import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../profitCalculators/Calculator11x5'
 import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
 import Conbinations from 'src/Conbination'
 
-const OptionsGenerator = new BetOptionsGenerator11x5()
+const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const Conbination = new Conbinations()
 const DanShiInput = new DanshiInput()
@@ -37,13 +37,13 @@ function dantuoSelectLimit(this: any, num: string, index: number, danmaLen: numb
 
 export default {
   'sanma-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
     betCount: function (num: number) {
       return Conbination.zhixuanBetCountWrapper.call(this, num, 2)
     }
   },
   'erma-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY.slice(0, 2)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY.slice(0, 2)),
     betCount: function (num: number) {
       return Conbination.zhixuanBetCountWrapper.call(this, num, 1)
     }
@@ -89,19 +89,19 @@ export default {
     noBaozi: true
   },
   'sanma-zuxuan-fushi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 3)
     }
   },
   'erma-zuxuan-fushi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 2)
     }
   },
   'sanma-zuxuan-dantuo': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     },
@@ -110,7 +110,7 @@ export default {
     }
   },
   'erma-zuxuan-dantuo': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -119,7 +119,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuaner': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -129,7 +129,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4 })
   },
   'renxuandantuo-renxuandantuo-renxuansan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     },
@@ -139,7 +139,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6 })
   },
   'renxuandantuo-renxuandantuo-renxuansi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 4)
     },
@@ -149,7 +149,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4 })
   },
   'renxuandantuo-renxuandantuo-renxuanwu': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 5)
     },
@@ -158,7 +158,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanliu': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 6)
     },
@@ -176,7 +176,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanqi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 7)
     },
@@ -195,7 +195,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanba': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 8)
     },
@@ -215,11 +215,11 @@ export default {
     }
   },
   'budingwei-budingwei-budingwei': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'dingweidan-dingweidan-dingweidan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
@@ -232,60 +232,60 @@ export default {
     }
   },
   'quweixing-quweixing-dingdanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(['5单0双', '4单1双', '3单2双', '2单3双', '1单4双', '0单5双'], true),
+    betOptions: betOptionsGenerator.generatBetOptions(['5单0双', '4单1双', '3单2双', '2单3双', '1单4双', '0单5双']),
     encode: DingDanShuangEncode,
     decode: DingDanShuangDecode
   },
   'quweixing-quweixing-caizhongwei': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true)
   },
   'renxuanfushi-renxuanfushi-renxuanyi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 })
   },
   'renxuanfushi-renxuanfushi-renxuaner': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 2)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3, 6: 6, 10: 10 })
   },
   'renxuanfushi-renxuanfushi-renxuansan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 3)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 10: 10 })
   },
   'renxuanfushi-renxuanfushi-renxuansi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 4)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 5: 5 })
   },
   'renxuanfushi-renxuanfushi-renxuanwu': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 5)
     }
   },
   'renxuanfushi-renxuanfushi-renxuanliu': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 6)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 7: 2, 28: 3, 84: 4, 210: 5, 462: 6 })
   },
   'renxuanfushi-renxuanfushi-renxuanqi': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 7)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 8: 3, 36: 6, 120: 10, 330: 15 })
   },
   'renxuanfushi-renxuanfushi-renxuanba': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 8)
     },

@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs'
 const baseConfig = createBasicConfig()
 
 export default merge(baseConfig, {
-  input: './src/index.ts',
+  input: './src/Main.ts',
   output: [
     {
       format: 'cjs',

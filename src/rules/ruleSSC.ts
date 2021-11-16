@@ -1,5 +1,5 @@
 import { OptionSection, ProfitParams } from 'src/Interfases'
-import BetOptionsGenerator from '../optionsGenerators/Generator'
+import BetOptionsGenerator from '../BetOptionsGenerator'
 import CalculatorSSC from '../profitCalculators/CalculatorSSC'
 import Util from '../Util'
 import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
@@ -7,7 +7,7 @@ import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from
 import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/LongHuHe'
 import Conbinations from 'src/Conbination'
 
-const OptionsGenerator = new BetOptionsGenerator()
+const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new CalculatorSSC()
 const Conbination = new Conbinations()
 
@@ -189,7 +189,7 @@ function getAllPailieZuheChaList(data: Array<any>, len: number, numArr: Array<an
 
 function generatLongHuHeRule(label: string) {
   return {
-    betOptions: OptionsGenerator.generatBetOptions(LONG_HU_HE_ARRAY, false, [label]),
+    betOptions: betOptionsGenerator.generatBetOptions(LONG_HU_HE_ARRAY, false, [label]),
     encode: LongHuEncode,
     decode: LongHuDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(((data.prize * data.amountUnit) / 6) * data.beishu - data.betAmt, 2))
@@ -198,7 +198,7 @@ function generatLongHuHeRule(label: string) {
 
 export default {
   'yixing-dingweidan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
@@ -207,42 +207,42 @@ export default {
     }
   },
   'wuxing-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY)
   },
   'sixing-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(1))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1))
   },
   'qiansan-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))
   },
   'zhongsan-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(1, 4))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 4))
   },
   'housan-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))
   },
   'erxing-zhixuan-houerfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(3))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))
   },
   'erxing-zhixuan-qianerfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(0, 2))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(0, 2))
   },
   'renxuan-renxuan2-zhixuanfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: getPailieByRenxuan(2),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zhixuanfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: getPailieByRenxuan(3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan4-zhixuanfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: getPailieByRenxuan(4),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
@@ -336,7 +336,7 @@ export default {
     }
   },
   'renxuan-renxuan2-zhixuanhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 18, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 18, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 2, 0)
     },
@@ -349,7 +349,7 @@ export default {
     }
   },
   'renxuan-renxuan3-zhixuanhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 27, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 3, 0)
     },
@@ -362,7 +362,7 @@ export default {
     }
   },
   'renxuan-renxuan2-zuxuanhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 17, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 17, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 2)
     },
@@ -375,7 +375,7 @@ export default {
     }
   },
   'renxuan-renxuan3-zuxuanhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 26, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 26, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
@@ -388,7 +388,7 @@ export default {
     }
   },
   'renxuan-renxuan2-zuxuanfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     position: [0, 0, 0, 1, 1],
     positionLimit: 2,
@@ -398,7 +398,7 @@ export default {
     }
   },
   'renxuan-renxuan3-zusanfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2) * 2,
     position: [0, 0, 1, 1, 1],
     positionLimit: 3,
@@ -408,7 +408,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan24': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 4),
     position: [0, 1, 1, 1, 1],
     positionLimit: 4,
@@ -418,7 +418,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan12': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -430,7 +430,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan6': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号']),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     },
@@ -442,7 +442,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan4': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['三重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     },
@@ -454,7 +454,7 @@ export default {
     }
   },
   'renxuan-renxuan3-zuliufushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 3),
     position: [0, 0, 1, 1, 1],
     positionLimit: 3,
@@ -464,7 +464,7 @@ export default {
     }
   },
   'hezhi-wuxing-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 45, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 45, false),
     isSingleNum: true,
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.getProfitSSC.call(this, data)
@@ -591,201 +591,201 @@ export default {
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456'
   },
   'wuxing-zhixuan-zuhe': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: (num: number) => 5 * num,
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.getProfitZuHe.call(this, data, 5)
     }
   },
   'sixing-zhixuan-zuhe': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(1)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1)),
     betCount: (num: number) => 4 * num,
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.getProfitZuHe.call(this, data, 4)
     }
   },
   'qiansan-zhixuan-zuhe': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2)),
     betCount: (num: number) => 3 * num,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'zhongsan-zhixuan-zuhe': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(3)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3)),
     betCount: (num: number) => 3 * num,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'housan-zhixuan-zuhe': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(4)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(4)),
     betCount: (num: number) => 3 * num,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'wuxing-zuxuan-zuxuan120': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 5)
   },
   'sixing-zuxuan-zuxuan24': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 4)
   },
   'erxing-zuxuan-houerfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2)
   },
   'erxing-zuxuan-qianerfushi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2)
   },
   'budingwei-sanxingbudingwei-housanermabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3 })
   },
   'budingwei-sanxingbudingwei-qiansanermabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3 })
   },
   'budingwei-sanxingbudingwei-zhongsanermabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3 })
   },
   'budingwei-sixingbudingwei-sixingermabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3, 6: 6 })
   },
   'budingwei-wuxingbudingwei-wuxingermabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 6: 6, 10: 10 })
   },
   'budingwei-wuxingbudingwei-wuxingsanmabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 3),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 6: 6, 10: 10 })
   },
   'wuxing-zuxuan-zuxuan60': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     }
   },
   'sixing-zuxuan-zuxuan12': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     }
   },
   'wuxing-zuxuan-zuxuan30': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[1].selected, this.betOptions[0].selected, 2)
     }
   },
   'wuxing-zuxuan-zuxuan20': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['三重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     }
   },
   'sixing-zuxuan-zuxuan4': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['三重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'wuxing-zuxuan-zuxuan10': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['三重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'wuxing-zuxuan-zuxuan5': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['三重号', '二重号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['三重号', '二重号']),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'sixing-zuxuan-zuxuan6': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['四重号', '单号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['四重号', '单号']),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     }
   },
   'qiansan-zuxuan-zusan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, ['二重号']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, ['二重号']),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2) * 2
     }
   },
   'zhongsan-zuxuan-zusan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2) * 2
     }
   },
   'housan-zuxuan-zusan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2) * 2
     }
   },
   'qiansan-zuxuan-zuliu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 3)
     }
   },
   'zhongsan-zuxuan-zuliu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 3)
     }
   },
   'housan-zuxuan-zuliu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 3)
     }
   },
   'qiansan-zhixuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 27, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 3, 0)
     },
     isSingleNum: true
   },
   'zhongsan-zhixuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 27, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 3, 0)
     },
     isSingleNum: true
   },
   'housan-zhixuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 27, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 27, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 3, 0)
     },
     isSingleNum: true
   },
   'erxing-zhixuan-houerhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 18, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 18, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 2, 0)
     },
     isSingleNum: true
   },
   'erxing-zhixuan-qianerhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 18, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 18, false),
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 2, 0)
     },
     isSingleNum: true
   },
   'qiansan-zuxuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 26, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
@@ -793,7 +793,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'zhongsan-zuxuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 26, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
@@ -801,7 +801,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'housan-zuxuan-hezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 26, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 26, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
@@ -809,228 +809,208 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'erxing-zuxuan-houerhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 17, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 17, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 2)
     },
     isSingleNum: true
   },
   'erxing-zuxuan-qianerhezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(1, 17, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 17, false),
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 2)
     },
     isSingleNum: true
   },
   'qiansan-zhixuan-kuadu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieDOfKuadu(this.betOptions[0].selected, 3)
     }
   },
   'zhongsan-zhixuan-kuadu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieDOfKuadu(this.betOptions[0].selected, 3)
     }
   },
   'housan-zhixuan-kuadu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieDOfKuadu(this.betOptions[0].selected, 3)
     }
   },
   'erxing-zhixuan-houerkuadu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieDOfKuadu(this.betOptions[0].selected, 2)
     }
   },
   'erxing-zhixuan-qianerkuadu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: function () {
       return getPailieDOfKuadu(this.betOptions[0].selected, 2)
     }
   },
   'quwei-teshu-yifanfengshun': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 })
   },
   'quwei-teshu-haoshichengshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2 })
   },
   'quwei-teshu-sanxingbaoxi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'quwei-teshu-sijifacai': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'budingwei-sanxingbudingwei-housanyimabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sanxingbudingwei-qiansanyimabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sanxingbudingwei-zhongsanyimabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sixingbudingwei-sixingyimabudingwei': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4 })
   },
   'qiansan-zuxuan-baodan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
   'zhongsan-zuxuan-baodan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
   'housan-zuxuan-baodan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
   'erxing-zuxuan-houerbaodan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => num * 9,
     limit: 1
   },
   'erxing-zuxuan-qianerbaodan': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => num * 9,
     limit: 1
   },
   'qiansan-qita-hezhiweishu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'zhongsan-qita-hezhiweishu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'housan-qita-hezhiweishu': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true)
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'qiansan-qita-teshuhaoma': {
-    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
+    betOptions: betOptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'zhongsan-qita-teshuhaoma': {
-    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
+    betOptions: betOptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'housan-qita-teshuhaoma': {
-    betOptions: OptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
+    betOptions: betOptionsGenerator.generatBetOptions(['豹子', '顺子', '对子']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'hezhi-wuxing-bsde': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'daxiaodanshuang-daxiaodanshuang-houerdaxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(3)),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(3)),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'daxiaodanshuang-daxiaodanshuang-housandaxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(2)),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(2)),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'daxiaodanshuang-daxiaodanshuang-qianerdaxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 2)),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 2)),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'daxiaodanshuang-daxiaodanshuang-qiansandaxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 3)),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 3)),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'daxiaodanshuang-daxiaodanshuang-zhongsandaxiaodanshuang': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(1, 4)),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(1, 4)),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },
   'quwei-quwei-wumaquweisanxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-simaquweisanxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-housanquweierxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(2, 3)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(2, 3)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-qiansanquweierxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 1)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 1)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-zhongsanquweierxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-qujian-wumaqujiansanxing': {
-    betOptions: OptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 2 ? QuJian[key] : key)
   },
   'quwei-qujian-simaqujiansanxing': {
-    betOptions: OptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-housanqujianerxing': {
-    betOptions: OptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['百位']).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(3))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['百位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-qiansanqujianerxing': {
-    betOptions: OptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['万位']).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(1, 3))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['万位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-zhongsanqujianerxing': {
-    betOptions: OptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(
-      OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(0, 9, false), true, DIGIT_ARRAY.slice(2, 4))
-    ),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },

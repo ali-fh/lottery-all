@@ -1,4 +1,4 @@
-import BetOptionsGeneratorPK10 from '../optionsGenerators/GeneratorPK10'
+import BetOptionsGenerator from '../BetOptionsGenerator'
 import CalculatorPK10 from '../profitCalculators/CalculatorPK10'
 
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
@@ -6,7 +6,7 @@ import { OptionSection, ProfitParams } from 'src/Interfases'
 import DanshiInput from '../DanshiInput'
 import Conbinations from 'src/Conbination'
 
-const OptionsGenerator = new BetOptionsGeneratorPK10()
+const betOptionsGenerator = new BetOptionsGenerator()
 const Calculator = new CalculatorPK10()
 const Conbination = new Conbinations()
 const DanShiInput = new DanshiInput()
@@ -23,11 +23,11 @@ function danshiFormatter(val: string) {
 
 export default {
   'zhixuanhezhi-hezhi-guanyahezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(OptionsGenerator.generatButtonNumbers(3, 19, false), true),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(3, 19, false),
     isSingleNum: true
   },
   'liangmianpan-zhixuan-guanyahezhi': {
-    betOptions: OptionsGenerator.generatBetOptions(['大', '小', '单', '双'], false, ['冠亚和']),
+    betOptions: betOptionsGenerator.generatBetOptions(['大', '小', '单', '双'], false, ['冠亚和']),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode,
     getProfit: function (params: ProfitParams): string {
@@ -35,7 +35,7 @@ export default {
     }
   },
   'liangmianpan-zhixuan-rate_daccording': {
-    betOptions: OptionsGenerator.generatBetOptions(['大', '小', '单', '双'], false, TITLE_LABEL_ARRAY),
+    betOptions: betOptionsGenerator.generatBetOptions(['大', '小', '单', '双'], false, TITLE_LABEL_ARRAY),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode,
     betCount: function () {
@@ -46,7 +46,7 @@ export default {
     }
   },
   'liangmianpan-zhixuan-dragonwithtiger': {
-    betOptions: OptionsGenerator.getDragonWithTiger(TITLE_LABEL_ARRAY),
+    betOptions: betOptionsGenerator.getDragonWithTiger(TITLE_LABEL_ARRAY),
     encode: (key: string): number => Number(key.split(/龙|虎/)[1]) - 1,
     decode: function (key: string, index: string) {
       if (/[^0-9]/.test(key)) {
@@ -62,7 +62,7 @@ export default {
     }
   },
   'caichehao-dingweidan-dingweidan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
@@ -73,19 +73,19 @@ export default {
     }
   },
   'budingwei-sanxingbudingwei-qiansan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, ['前三']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, ['前三']),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
     getProfit: (data: ProfitParams) => Calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sanxingbudingwei-housan': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, ['后三']),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, ['后三']),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
     getProfit: (data: ProfitParams) => Calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'caipaiwei-zhixuanpk-guanyajun': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 2)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 2)),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
@@ -93,7 +93,7 @@ export default {
     }
   },
   'caipaiwei-zhixuanpk-qiansanpk': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 3)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 3)),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
@@ -101,7 +101,7 @@ export default {
     }
   },
   'caipaiwei-zhixuanpk-qiansipk': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 4)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 4)),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
@@ -109,7 +109,7 @@ export default {
     }
   },
   'caipaiwei-zhixuanpk-qianwu': {
-    betOptions: OptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 5)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 5)),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
