@@ -1,4 +1,4 @@
-import rulePK10 from '../../../src/rules/rulePK10'
+import rulePK10 from '../../../src/rules/RulePK10'
 
 const rule: any = rulePK10
 

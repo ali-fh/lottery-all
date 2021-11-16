@@ -1,4 +1,4 @@
-import ruleK3 from '../../../src/rules/ruleK3'
+import ruleK3 from '../../../src/rules/RuleK3'
 
 const rule: any = ruleK3
 

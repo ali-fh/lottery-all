@@ -1,4 +1,4 @@
-import rule11x5 from '../../../src/rules/rule11x5'
+import rule11x5 from '../../../src/rules/Rule11x5'
 
 const rule: any = rule11x5
 

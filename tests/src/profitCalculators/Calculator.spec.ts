@@ -1,5 +1,5 @@
 import Calculator from '../../../src/profitCalculators/Calculator'
-import inquiry from '../../../data/inquiry-K3.json'
+import inquiry from '../../data/inquiry-K3.json'
 
 const calculator = new Calculator()
 

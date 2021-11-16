@@ -1,8 +1,8 @@
-import ruleBasic from './rules/ruleBasic'
-import ruleK3 from './rules/ruleK3'
-import ruleSSC from './rules/ruleSSC'
-import rulePK10 from './rules/rulePK10'
-import rule11x5 from './rules/rule11x5'
+import ruleBasic from './rules/RuleBasic'
+import ruleK3 from './rules/RuleK3'
+import ruleSSC from './rules/RuleSSC'
+import rulePK10 from './rules/RulePK10'
+import rule11x5 from './rules/Rule11x5'
 
 import { cloneDeep } from 'lodash'
 
