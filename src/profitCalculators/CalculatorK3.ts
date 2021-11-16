@@ -8,8 +8,9 @@ export default class extends Calculator {
     arr.sort(function (a, b) {
       return a - b
     })
+    console.log(selectedArr)
     const basicProfit: string = Util.toFixed(arr[0] * params.amountUnit * params.beishu - params.betAmt, 2)
-    if (selectedArr.length === 1) {
+    if (params.betCount === 1) {
       return basicProfit
     } else {
       return `${basicProfit} ~ ${Util.toFixed(arr[arr.length - 1] * params.amountUnit * params.beishu - params.betAmt, 2)}`

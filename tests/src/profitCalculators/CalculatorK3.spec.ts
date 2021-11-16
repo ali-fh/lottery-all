@@ -14,7 +14,7 @@ test('基础获利率', () => {
       },
       ['4']
     )
-  ).toBe('138.25')
+  ).toBe('138.25 ~ 138.25')
 
   expect(
     calculator.getProfitHeZhi(

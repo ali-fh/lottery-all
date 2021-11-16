@@ -1,6 +1,6 @@
 import ProfitCalculator from '../profitCalculators/Calculator'
 import { ProfitParams } from '../Interfases'
-import DanshiInput from 'src/DanshiInput'
+import DanshiInput from '../DanshiInput'
 
 export default {
   betOptions: [],

@@ -1,11 +1,11 @@
-import { OptionSection, ProfitParams } from 'src/Interfases'
+import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import CalculatorSSC from '../profitCalculators/CalculatorSSC'
 import Util from '../Util'
 import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/LongHuHe'
-import Conbinations from 'src/Conbination'
+import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new CalculatorSSC()
@@ -229,21 +229,27 @@ export default {
   },
   'renxuan-renxuan2-zhixuanfushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
-    betCount: getPailieByRenxuan(2),
+    betCount: function () {
+      return getPailieByRenxuan.call(this, 2)
+    },
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zhixuanfushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
-    betCount: getPailieByRenxuan(3),
+    betCount: function () {
+      return getPailieByRenxuan.call(this, 3)
+    },
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan4-zhixuanfushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
-    betCount: getPailieByRenxuan(4),
+    betCount: function () {
+      return getPailieByRenxuan.call(this, 4)
+    },
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }

@@ -13,6 +13,7 @@ export default {
   'k3-k3-hezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(3, 18, true),
     getProfit: function (params: ProfitParams): string {
+      console.log(this.betOptions[0].selected)
       return ProfitCalculator.getProfitHeZhi(params, this.betOptions[0].selected)
     }
   },

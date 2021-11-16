@@ -32,10 +32,8 @@ export default class {
   }
 
   public getAllPailieZuHeBuTongHaoWrapper(num: number): Array<string> {
-    const CONBITATION_SOURCE: number[] = [1, 2, 3, 4, 5, 6]
-
     let data: Array<string> = []
-    this.getAllPailieZuHeBuTongHao(CONBITATION_SOURCE, num, data, '', false)
+    this.getAllPailieZuHeBuTongHao([1, 2, 3, 4, 5, 6], num, data, '', false)
     return data
   }
 
