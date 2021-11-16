@@ -8,6 +8,7 @@ import Conbinations from 'src/Conbination'
 const OptionsGenerator = new BetOptionsGenerator11x5()
 const ProfitCalculator = new Calculator()
 const Conbination = new Conbinations()
+const DanShiInput = new DanshiInput()
 
 const DANMA_TOUMA_ARRAY = ['胆码', '拖码']
 const YI_ER_SAN_ARRAY = ['一位', '二位', '三位']
@@ -36,13 +37,13 @@ function dantuoSelectLimit(this: any, num: string, index: number, danmaLen: numb
 
 export default {
   'sanma-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(YI_ER_SAN_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
     betCount: function (num: number) {
       return Conbination.zhixuanBetCountWrapper.call(this, num, 2)
     }
   },
   'erma-zhixuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(YI_ER_SAN_ARRAY.slice(0, 2)),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY.slice(0, 2)),
     betCount: function (num: number) {
       return Conbination.zhixuanBetCountWrapper.call(this, num, 1)
     }
@@ -50,7 +51,7 @@ export default {
   'sanma-zhixuan-danshi': {
     betCount: () => 3,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)任意3个号码1注,与开奖号码完全相同(且顺序一致),即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 11',
@@ -60,7 +61,7 @@ export default {
   'erma-zhixuan-danshi': {
     betCount: () => 2,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)任意2个号码1注,与开奖号码完全相同(且顺序一致),即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|03 05|07 08',
@@ -70,7 +71,7 @@ export default {
   'sanma-zuxuan-danshi': {
     betCount: () => 3,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)任意3个不同号码1注,与开奖号码完全相同(顺序不限),即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 11',
@@ -80,7 +81,7 @@ export default {
   'erma-zuxuan-danshi': {
     betCount: () => 2,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)任意2个不同号码1注,与开奖号码完全相同(顺序不限),即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|04 05|07 08',
@@ -88,19 +89,19 @@ export default {
     noBaozi: true
   },
   'sanma-zuxuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 3)
     }
   },
   'erma-zuxuan-fushi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 2)
     }
   },
   'sanma-zuxuan-dantuo': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     },
@@ -109,7 +110,7 @@ export default {
     }
   },
   'erma-zuxuan-dantuo': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -118,7 +119,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuaner': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -128,7 +129,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4 })
   },
   'renxuandantuo-renxuandantuo-renxuansan': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     },
@@ -138,7 +139,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6 })
   },
   'renxuandantuo-renxuandantuo-renxuansi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 4)
     },
@@ -148,7 +149,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { '1': 1, '2': 2, '3': 3, '4': 4 })
   },
   'renxuandantuo-renxuandantuo-renxuanwu': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 5)
     },
@@ -157,7 +158,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanliu': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 6)
     },
@@ -175,7 +176,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanqi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 7)
     },
@@ -194,7 +195,7 @@ export default {
     }
   },
   'renxuandantuo-renxuandantuo-renxuanba': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(DANMA_TOUMA_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, DANMA_TOUMA_ARRAY),
     betCount: function () {
       return Conbination.getAllPailieZuheList_danmatuoma(this.betOptions[0].selected, this.betOptions[1].selected, 8)
     },
@@ -214,11 +215,11 @@ export default {
     }
   },
   'budingwei-budingwei-budingwei': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'dingweidan-dingweidan-dingweidan': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(YI_ER_SAN_ARRAY),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
@@ -236,55 +237,55 @@ export default {
     decode: DingDanShuangDecode
   },
   'quweixing-quweixing-caizhongwei': {
-    betOptions: OptionsGenerator.generatBetOptions11x5()
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true)
   },
   'renxuanfushi-renxuanfushi-renxuanyi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 })
   },
   'renxuanfushi-renxuanfushi-renxuaner': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 2)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3, 6: 6, 10: 10 })
   },
   'renxuanfushi-renxuanfushi-renxuansan': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 3)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 10: 10 })
   },
   'renxuanfushi-renxuanfushi-renxuansi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 4)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 5: 5 })
   },
   'renxuanfushi-renxuanfushi-renxuanwu': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 5)
     }
   },
   'renxuanfushi-renxuanfushi-renxuanliu': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 6)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 7: 2, 28: 3, 84: 4, 210: 5, 462: 6 })
   },
   'renxuanfushi-renxuanfushi-renxuanqi': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 7)
     },
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 8: 3, 36: 6, 120: 10, 330: 15 })
   },
   'renxuanfushi-renxuanfushi-renxuanba': {
-    betOptions: OptionsGenerator.generatBetOptions11x5(),
+    betOptions: OptionsGenerator.generatNumberBetOptions(1, 11, true),
     betCount: function () {
       return Conbination.getAllPailieZuheListWrapper.call(this, 8)
     },
@@ -293,7 +294,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuanyi': {
     betCount: () => 1,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意1个号码为1注,开奖号码包含所选号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01|04|08',
@@ -304,7 +305,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuaner': {
     betCount: () => 2,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意2个不同号码为1注,开奖号码包含所选2个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|04 05|08 09',
@@ -315,7 +316,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuansan': {
     betCount: () => 3,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意3个不同号码为1注,开奖号码包含所选3个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|04 05 06|08 09 10',
@@ -326,7 +327,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuansi': {
     betCount: () => 4,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意4个不同号码为1注,开奖号码包含所选4个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04|04 05 06 07|08 09 10 11',
@@ -337,7 +338,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuanwu': {
     betCount: () => 5,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意5个不同号码为1注,开奖号码包含所选5个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05|04 05 06 07 08|07 08 09 10 11',
@@ -347,7 +348,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuanliu': {
     betCount: () => 6,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意6个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06|04 05 06 07 08 09|06 07 08 09 10 11',
@@ -357,7 +358,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuanqi': {
     betCount: () => 7,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意7个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06 07|04 05 06 07 08 09 10|05 06 07 08 09 10 11',
@@ -367,7 +368,7 @@ export default {
   'renxuandanshi-renxuandanshi-renxuanba': {
     betCount: () => 8,
     getInput: function (input: string) {
-      return DanshiInput.getInput.call(this, input, 11)
+      return DanShiInput.getInput.call(this, input, 11)
     },
     rule: '输入(01-11)中任意8个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
     placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06 07 08|03 04 05 06 07 08 09 10|04 05 06 07 08 09 10 11',

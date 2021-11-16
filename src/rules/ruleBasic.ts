@@ -9,6 +9,6 @@ export default {
   decode: (key: string) => key,
   betCount: (num: number) => num,
   getInput: function (input: string) {
-    return DanshiInput.getInputSSC.call(this, input)
+    return new DanshiInput().getInputSSC.call(this, input)
   }
 }

@@ -5,7 +5,7 @@ import Calculator from './Calculator'
 export default class extends Calculator {
   profitWrapper(this: any, params: ProfitParams, test: any, limit: number) {
     let pos = 0
-    let arr = this.position ? this.position : this.list
+    const arr = this.position ? this.position : this.list
 
     arr.forEach((element: any) => {
       if (this.position) {
@@ -19,11 +19,8 @@ export default class extends Calculator {
   }
 
   getProfitSSC(this: any, params: ProfitParams) {
-    let arr: Array<number> = []
     if (this.list.length) {
-      this.list[0].selected.forEach((element: OptionSection) => {
-        arr.push(Number(params.prize[Number(element)]))
-      })
+      let arr: Array<number> = this.list[0].selected.forEach((element: OptionSection) => Number(params.prize[Number(element)]))
       arr.sort(function (a, b) {
         return a - b
       })

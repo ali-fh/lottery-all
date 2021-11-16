@@ -23,9 +23,7 @@ export default class {
 
   /** 检测某个字符串出现的次数 */
   public static judgeCharRepeatNum(str: string, char: string) {
-    var regex = new RegExp(char, 'g')
-    var result = str.match(regex)
-    var count = !result ? 0 : result.length
-    return count
+    var result = str.match(new RegExp(char, 'g'))
+    return !result ? 0 : result.length
   }
 }

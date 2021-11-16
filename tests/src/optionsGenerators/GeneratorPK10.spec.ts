@@ -32,13 +32,13 @@ describe('生成龙虎组合', () => {
 
 let result: Array<OptionSection> = []
 test('生成PK10默认下著资讯', () => {
-  result = betOptionsGenerator.generatBetOptionsPK10(['后三'])
+  result = betOptionsGenerator.generatNumberBetOptions(1, 10, false, ['后三'])
   expect(result[0].label).toBe('后三')
   expect(result[0].options).toStrictEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
   expect(result[0].quickSupport).toBe(true)
 })
 
 test('生成PK10默认下著资讯-无标题', () => {
-  result = betOptionsGenerator.generatBetOptionsPK10()
+  result = betOptionsGenerator.generatNumberBetOptions(1, 10, false)
   expect(result[0].label).toStrictEqual('')
 })

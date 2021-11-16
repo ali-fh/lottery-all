@@ -41,11 +41,8 @@ function getPailieByRenxuan(this: any, num: number) {
 }
 
 function positionBet(num: number, position: Array<number>, limit: number) {
-  var total = position.reduce(function (sum: number, ele: number) {
-    return sum + ele
-  }, 0)
-  var bs = getPailieByNoLabel(total, limit)
-  return num * bs
+  const total = position.reduce((sum: number, ele: number) => sum + ele, 0)
+  return num * getPailieByNoLabel(total, limit)
 }
 
 /** 获取几个号码的排列 */

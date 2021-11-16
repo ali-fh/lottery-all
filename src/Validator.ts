@@ -19,13 +19,9 @@ export default class {
 
   /** 检测排序后是否重复 */
   public static judgeRepeatBySort(arr: string[], str: string) {
-    var strArr = str.split('')
-    strArr.sort()
-    str = strArr.join('')
+    str = str.split('').sort().join('')
     for (var i = 0; i < arr.length; i++) {
-      var eleArr = arr[i].split('')
-      eleArr.sort()
-      var ele = eleArr.join('')
+      var ele = arr[i].split('').sort().join('')
       if (ele === str) {
         return true
       }
