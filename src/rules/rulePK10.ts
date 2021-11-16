@@ -2,9 +2,9 @@ import BetOptionsGenerator from '../BetOptionsGenerator'
 import CalculatorPK10 from '../profitCalculators/CalculatorPK10'
 
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
-import { OptionSection, ProfitParams } from 'src/Interfases'
+import { OptionSection, ProfitParams } from '../Interfases'
 import DanshiInput from '../DanshiInput'
-import Conbinations from 'src/Conbination'
+import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const Calculator = new CalculatorPK10()

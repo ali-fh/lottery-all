@@ -1,9 +1,9 @@
-import DanshiInput from 'src/DanshiInput'
-import { OptionSection, ProfitParams } from 'src/Interfases'
+import DanshiInput from '../DanshiInput'
+import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../profitCalculators/Calculator11x5'
 import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
-import Conbinations from 'src/Conbination'
+import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()

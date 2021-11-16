@@ -19,12 +19,3 @@ describe.each(['k3-k3-hezhi', 'k3-k3-daxiaodanshuang', 'k3-k3-santonghao', 'k3-k
     expect(rule[name].betOptions[0].options).toStrictEqual(obj[name])
   })
 })
-
-test(`encoder`, () => {
-  expect(rule['k3-k3-daxiaodanshuang'].encode('大')).toBe(1)
-})
-
-test(`encoder`, () => {
-  expect(rule['k3-k3-daxiaodanshuang'].decode(1)).toBe('大')
-  expect(rule['k3-k3-daxiaodanshuang'].decode(5)).toBe('5')
-})
