@@ -1,7 +1,7 @@
 import DanshiInput from '../DanshiInput'
 import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
-import Calculator from '../profitCalculators/Calculator11x5'
+import Calculator from '../Calculator'
 import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
 import Conbinations from '../Conbination'
 

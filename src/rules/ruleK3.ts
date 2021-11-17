@@ -1,11 +1,11 @@
 import BetOptionsGenerator from '../BetOptionsGenerator'
-import CalculatorK3 from '../profitCalculators/CalculatorK3'
+import Calculator from '../Calculator'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { ProfitParams } from '../Interfases'
 import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
-const ProfitCalculator = new CalculatorK3()
+const ProfitCalculator = new Calculator()
 const Conbination = new Conbinations()
 
 export default {
@@ -13,7 +13,6 @@ export default {
   'k3-k3-hezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(3, 18, true),
     getProfit: function (params: ProfitParams): string {
-      console.log(this.betOptions[0].selected)
       return ProfitCalculator.getProfitHeZhi(params, this.betOptions[0].selected)
     }
   },

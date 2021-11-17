@@ -7,7 +7,7 @@ export default class {
         label,
         options,
         selected: [],
-        quickSupport: quickSupport ? options.length > 6 : false
+        quickSupport
       }
     })
   }

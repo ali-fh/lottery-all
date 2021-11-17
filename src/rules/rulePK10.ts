@@ -1,5 +1,5 @@
 import BetOptionsGenerator from '../BetOptionsGenerator'
-import CalculatorPK10 from '../profitCalculators/CalculatorPK10'
+import Calculator from '../Calculator'
 
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { OptionSection, ProfitParams } from '../Interfases'
@@ -7,7 +7,7 @@ import DanshiInput from '../DanshiInput'
 import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
-const Calculator = new CalculatorPK10()
+const calculator = new Calculator()
 const Conbination = new Conbinations()
 const DanShiInput = new DanshiInput()
 
@@ -31,7 +31,7 @@ export default {
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode,
     getProfit: function (params: ProfitParams): string {
-      return Calculator.getProfitGuanYaHeZhi(params, this.betOptions[0].selected)
+      return calculator.getProfitGuanYaHeZhi(params, this.betOptions[0].selected)
     }
   },
   'liangmianpan-zhixuan-rate_daccording': {
@@ -42,7 +42,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'liangmianpan-zhixuan-dragonwithtiger': {
@@ -58,7 +58,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'caichehao-dingweidan-dingweidan': {
@@ -69,20 +69,20 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return Calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper.call(this, data)
     }
   },
   'budingwei-sanxingbudingwei-qiansan': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, ['前三']),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
-    getProfit: (data: ProfitParams) => Calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
+    getProfit: (data: ProfitParams) => calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sanxingbudingwei-housan': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, ['后三']),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
-    getProfit: (data: ProfitParams) => Calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
+    getProfit: (data: ProfitParams) => calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'caipaiwei-zhixuanpk-guanyajun': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY.slice(0, 2)),

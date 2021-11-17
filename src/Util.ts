@@ -1,3 +1,7 @@
+interface Counts {
+  [key: string]: number
+}
+
 export default class {
   public static toFixed(num: number, len: number = 1): string {
     let str = num.toString()
@@ -12,13 +16,12 @@ export default class {
   }
 
   /** 检测字符串数组中，重复最大值 */
-  public static getMaxRepeatNumFormStr(str: string) {
-    var max = 0
-    for (var i = 0; i < str.length; i++) {
-      var num = this.judgeCharRepeatNum(str, str[i])
-      max = max < num ? num : max
-    }
-    return max
+  public static getMaxCount(inputString: string): number {
+    let counts: Counts = {}
+    inputString.split('').forEach((element) => {
+      counts[element] = (counts[element] || 0) + 1
+    })
+    return Math.max(...Object.values(counts))
   }
 
   /** 检测某个字符串出现的次数 */

@@ -1,4 +1,4 @@
-import Calculator from '../../../src/profitCalculators/Calculator'
+import Calculator from '../../../src/Calculator'
 import inquiry from '../../data/inquiry-K3.json'
 
 const calculator = new Calculator()
@@ -16,4 +16,30 @@ test('基础获利率', () => {
       betAmt: 2
     })
   ).toBe('1.89')
+})
+
+test('基础获利率', () => {
+  expect(
+    calculator.getProfitHeZhi(
+      {
+        prize: inquiry['k3-k3-hezhi'].extra_prize,
+        amountUnit: 1,
+        beishu: 1,
+        betAmt: 2
+      },
+      ['4']
+    )
+  ).toBe('138.25 ~ 138.25')
+
+  expect(
+    calculator.getProfitHeZhi(
+      {
+        prize: inquiry['k3-k3-hezhi'].extra_prize,
+        amountUnit: 1,
+        beishu: 1,
+        betAmt: 6
+      },
+      ['4', '5', '18']
+    )
+  ).toBe('64.12 ~ 414.76')
 })

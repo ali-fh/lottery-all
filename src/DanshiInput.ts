@@ -37,13 +37,13 @@ export default class {
       if (betArr[i].length !== this.betCount()) {
         continue // 如果长度不一致，则去掉
       }
-      if (this.noRepeat && Util.getMaxRepeatNumFormStr(betArr[i]) >= 2) {
+      if (this.noRepeat && Util.getMaxCount(betArr[i]) >= 2) {
         continue // 如果有重复去掉
       }
-      if (this.isNeedRepeat && Util.getMaxRepeatNumFormStr(betArr[i]) < this.mustRepeatNum) {
+      if (this.isNeedRepeat && Util.getMaxCount(betArr[i]) < this.mustRepeatNum) {
         continue // 如果必须重复且小于重复次数去掉
       }
-      if (this.noBaozi && Util.getMaxRepeatNumFormStr(betArr[i]) === this.betCount()) {
+      if (this.noBaozi && Util.getMaxCount(betArr[i]) === this.betCount()) {
         continue // 有豹子去掉
       }
       if (this.noOrder && Validator.judgeRepeatBySort(arr, betArr[i])) {

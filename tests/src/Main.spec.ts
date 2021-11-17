@@ -9,6 +9,9 @@ test('切换玩法', () => {
 
 test('快捷选号', () => {
   main.switchRule('k3-k3-hezhi')
+
+  main.quickSelectBall('全', 0)
+  expect(main.currentRule.betOptions[0].selected).toStrictEqual(['03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18'])
   main.quickSelectBall('大', 0)
   expect(main.currentRule.betOptions[0].selected).toStrictEqual(['11', '12', '13', '14', '15', '16', '17', '18'])
   main.quickSelectBall('小', 0)
@@ -23,18 +26,31 @@ test('快捷选号', () => {
 
 test('计算注数', () => {
   main.switchRule('k3-k3-hezhi')
+
+  main.selectedBall('04', 0)
+  expect(main.getBetCount()).toBe(1)
+
   main.quickSelectBall('大', 0)
   expect(main.getBetCount()).toBe(8)
+
+  main.quickSelectBall('全', 0)
+  expect(main.getBetCount()).toBe(16)
 })
 
 test('计算获利率', () => {
+  main.quickSelectBall('大', 0)
   expect(
     main.getProfit({
-      prize: inquery['k3-k3-hezhi'].extra_prize,
+      prize: inquery['k3-k3-hezhi'].is_enable_extra ? inquery['k3-k3-hezhi'].extra_prize : inquery['k3-k3-hezhi'].prize,
       amountUnit: 1,
       beishu: 1,
       betAmt: 2,
       betCount: main.getBetCount()
     })
   ).toBe('13.58 ~ 418.76')
+})
+
+test('encode', () => {
+  console.log(main)
+  // expect(main).toBe(1)
 })

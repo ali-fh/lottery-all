@@ -1,6 +1,6 @@
 import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
-import CalculatorSSC from '../profitCalculators/CalculatorSSC'
+import Calculator from '../Calculator'
 import Util from '../Util'
 import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
@@ -8,7 +8,7 @@ import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/Long
 import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
-const ProfitCalculator = new CalculatorSSC()
+const ProfitCalculator = new Calculator()
 const Conbination = new Conbinations()
 
 const DIGIT_ARRAY = ['万位', '千位', '百位', '十位', '个位']
