@@ -1,11 +1,8 @@
-import merge from 'deepmerge'
-import { createBasicConfig } from '@open-wc/building-rollup'
 import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
 
-const baseConfig = createBasicConfig()
-
-export default merge(baseConfig, {
+export default {
   input: './src/Main.ts',
   output: [
     {
@@ -18,6 +15,7 @@ export default merge(baseConfig, {
     }
   ],
   plugins: [
+    terser(),
     typescript({
       exclude: 'node_modules/**',
       typescript: require('typescript')
@@ -33,7 +31,6 @@ export default merge(baseConfig, {
     if (warning.code === 'THIS_IS_UNDEFINED') {
       return
     }
-
     console.warn(warning.message)
   }
-})
+}

@@ -1,8 +1,8 @@
 {
   "name": "lottery-logic",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "彩票公用逻辑库",
+  "main": "dist/lottery-logic.cjs.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -10,18 +10,17 @@
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jimmy Yen",
   "license": "ISC",
   "devDependencies": {
-    "@open-wc/building-rollup": "^1.10.0",
     "@types/jest": "^27.0.2",
     "@types/lodash.clonedeep": "^4.5.6",
-    "deepmerge": "^4.2.2",
     "jest": "^27.3.1",
     "prettier": "2.4.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.59.0",
+    "rollup": "^2.60.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
