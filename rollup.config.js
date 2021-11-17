@@ -2,6 +2,7 @@ import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import copy from 'rollup-plugin-copy-assets'
+import nodeResolve from 'rollup-plugin-node-resolve'
 
 export default {
   input: './src/Main.ts',
@@ -29,7 +30,8 @@ export default {
     }),
     copy({
       assets: ['assets']
-    })
+    }),
+    nodeResolve()
   ],
   onwarn: function (warning) {
     if (warning.code === 'THIS_IS_UNDEFINED') {
