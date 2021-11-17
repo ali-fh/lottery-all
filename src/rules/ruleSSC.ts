@@ -256,8 +256,6 @@ export default {
   },
   'renxuan-renxuan2-zhixuandanshi': {
     betCount: () => 2,
-    rule: '勾选2位后输入(0-9)2个号码1注,与开奖号码位置和数值完全相同,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 34 67或33|98|45',
     position: [1, 1, 1, 0, 0],
     positionLimit: 2,
     positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 2),
@@ -267,8 +265,6 @@ export default {
   },
   'renxuan-renxuan3-zhixuandanshi': {
     betCount: () => 3,
-    rule: '勾选3位后输入(0-9)2个号码1注,与开奖号码位置和数值完全相同,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 345 678或334|985|456',
     position: [0, 0, 1, 1, 1],
     positionLimit: 3,
     positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
@@ -278,8 +274,6 @@ export default {
   },
   'renxuan-renxuan4-zhixuandanshi': {
     betCount: () => 4,
-    rule: '勾选4位后输入(0-9)4个号码1注,与开奖号码位置和数值完全相同,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 1234 3456 6789或3347|9856|4568',
     position: [0, 1, 1, 1, 1],
     positionLimit: 4,
     positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
@@ -289,8 +283,6 @@ export default {
   },
   'renxuan-renxuan2-zuxuandanshi': {
     betCount: () => 2,
-    rule: '勾选2位后输入(0-9)2个不同号码为1注,与开奖号码位置和数值完全相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 34 67或33|98|45',
     noRepeat: true,
     noOrder: true,
     position: [0, 0, 0, 1, 1],
@@ -302,8 +294,6 @@ export default {
   },
   'renxuan-renxuan3-zusandanshi': {
     betCount: () => 3,
-    rule: '勾选3位后输入(0-9)2个不同号码为2注,与开奖号码位置和数值完全相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 121 334 667或331|988|454',
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -317,8 +307,6 @@ export default {
   },
   'renxuan-renxuan3-zuliudanshi': {
     betCount: () => 3,
-    rule: '勾选3位后输入(0-9)3个不同号码为1注,与开奖号码位置和数值完全相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 345 678或312|987|456',
     noRepeat: true,
     noOrder: true,
     position: [0, 0, 1, 1, 1],
@@ -330,8 +318,6 @@ export default {
   },
   'renxuan-renxuan3-hunhezuxuan': {
     betCount: () => 3,
-    rule: '勾选3位后输入(0-9)3个号码为1注(不含豹子号),符合与开奖号码组三组六规则,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 345 678或312|987|456',
     noBaozi: true,
     noOrder: true,
     position: [0, 0, 1, 1, 1],
@@ -477,39 +463,25 @@ export default {
     }
   },
   'wuxing-zhixuan-danshi': {
-    betCount: () => 5,
-    rule: '输入(0-9)任意5个号码1注,与开奖号码完全相同(且顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12345 23456 88767或33021|98897|45698'
+    betCount: () => 5
   },
   'sixing-zhixuan-danshi': {
-    betCount: () => 4,
-    rule: '输入(0-9)4个号码1注,与开奖号码千 百 十 个位相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 1234 2345 8876或3302|9889|4569'
+    betCount: () => 4
   },
   'qiansan-zhixuan-danshi': {
-    betCount: () => 3,
-    rule: '输入(0-9)3个号码1注,与开奖号码万 千 百位完全相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 234 887或330|988|456'
+    betCount: () => 3
   },
   'housan-zhixuan-danshi': {
-    betCount: () => 3,
-    rule: '输入(0-9)3个号码1注,与开奖号码百 十 个位完全相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 234 887或330|988|456'
+    betCount: () => 3
   },
   'erxing-zhixuan-houerdanshi': {
-    betCount: () => 2,
-    rule: '输入(0-9)2个号码1注,与开奖号码十 个位完全相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 23 87或30|87|56'
+    betCount: () => 2
   },
   'erxing-zhixuan-qianerdanshi': {
-    betCount: () => 2,
-    rule: '输入(0-9)2个号码1注,与开奖号码万 千位完全相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 23 87或30|87|56'
+    betCount: () => 2
   },
   'qiansan-zuxuan-zusandanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)2个不同号码1注,与开奖号码万 千 百位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 122 556 878或221|998|445',
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -517,8 +489,6 @@ export default {
   },
   'zhongsan-zuxuan-zusandanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)2个不同号码1注,与开奖号码千 百 十位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 112 565 887或221|998|445',
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -526,8 +496,6 @@ export default {
   },
   'housan-zuxuan-zusandanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)2个不同号码1注,与开奖号码百 十 个位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 112 565 887或221|998|454',
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -535,66 +503,48 @@ export default {
   },
   'qiansan-zuxuan-zuliudanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)3个不同号码1注,与开奖号码万 千 百位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noRepeat: true,
     noOrder: true
   },
   'zhongsan-zuxuan-zuliudanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)3个不同号码1注,与开奖号码千 百 十位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noRepeat: true,
     noOrder: true
   },
   'housan-zuxuan-zuliudanshi': {
     betCount: () => 3,
-    rule: '输入(0-9)3个不同号码1注,与开奖号码百 十 个位相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noRepeat: true,
     noOrder: true
   },
   'erxing-zuxuan-houerdanshi': {
     betCount: () => 2,
-    rule: '输入(0-9)2个不同号码1注,与开奖号码十 个位相同(顺序不限,不含对子号),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 46 87或23|87|56',
     noRepeat: true,
     noOrder: true,
     noBaozi: true
   },
   'erxing-zuxuan-qianerdanshi': {
     betCount: () => 2,
-    rule: '2个不同号码为1注,与开奖号码万 千位完全相同(顺序不限,不含对子号),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 12 23 87或30|87|56',
     noRepeat: true,
     noBaozi: true,
     noOrder: true
   },
   'qiansan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
-    rule: '输入(0-9)3个号码1注(不含豹子号),符合与开奖号码组三组六规则,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noBaozi: true,
     noOrder: true
   },
   'zhongsan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
-    rule: '输入(0-9)3个号码1注(不含豹子号),符合与开奖号码组三组六规则,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noBaozi: true,
     noOrder: true
   },
   'housan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
-    rule: '输入(0-9)3个号码1注(不含豹子号),符合与开奖号码组三组六规则,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456',
     noBaozi: true,
     noOrder: true
   },
   'zhongsan-zhixuan-danshi': {
-    betCount: () => 3,
-    rule: '输入(0-9)3个号码1注,与开奖号码千 百 十位完全相同(顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 123 456 987或213|987|456'
+    betCount: () => 3
   },
   'wuxing-zhixuan-zuhe': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),

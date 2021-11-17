@@ -16,8 +16,10 @@ enum LOTTOERY_TYPE {
 export default class {
   public currentLotteryType: any = ''
   public currentRule: { [propName: string]: any } = {}
+  private categoryName: string = ''
 
   constructor(category: string) {
+    this.categoryName = category
     switch (category) {
       case LOTTOERY_TYPE.快三:
         this.currentLotteryType = ruleK3
@@ -108,7 +110,13 @@ export default class {
    * @memberof Lottery
    */
   switchRule(ruleName: string) {
+    const RULE = require('./assets/rule.json')
+    const PLACEHOLDER = require('./assets/placeholder.json')
     this.currentRule = Object.assign(cloneDeep(ruleBasic), cloneDeep(this.currentLotteryType[ruleName]))
+    if (!this.currentRule.betOptions.length) {
+      this.currentRule.rule = RULE[this.categoryName][ruleName]
+      this.currentRule.placeholder = PLACEHOLDER[this.categoryName][ruleName]
+    }
   }
 
   /**

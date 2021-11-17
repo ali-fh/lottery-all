@@ -1,6 +1,7 @@
 import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
+import copy from 'rollup-plugin-copy-assets'
 
 export default {
   input: './src/Main.ts',
@@ -25,6 +26,9 @@ export default {
       namedExports: {
         'node_modules/lodash/lodash.js': ['cloneDeep']
       }
+    }),
+    copy({
+      assets: ['assets']
     })
   ],
   onwarn: function (warning) {

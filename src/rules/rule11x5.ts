@@ -53,8 +53,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)任意3个号码1注,与开奖号码完全相同(且顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 11',
     noRepeat: true,
     noBaozi: true
   },
@@ -63,8 +61,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)任意2个号码1注,与开奖号码完全相同(且顺序一致),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|03 05|07 08',
     noRepeat: true,
     noBaozi: true
   },
@@ -73,8 +69,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)任意3个不同号码1注,与开奖号码完全相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 11',
     noRepeat: true,
     noBaozi: true
   },
@@ -83,8 +77,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)任意2个不同号码1注,与开奖号码完全相同(顺序不限),即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|04 05|07 08',
     noRepeat: true,
     noBaozi: true
   },
@@ -296,8 +288,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意1个号码为1注,开奖号码包含所选号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01|04|08',
     noRepeat: true,
     noBaozi: true,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 })
@@ -307,8 +297,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意2个不同号码为1注,开奖号码包含所选2个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02|04 05|08 09',
     noRepeat: true,
     noBaozi: true,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3, 6: 6, 10: 10 })
@@ -318,8 +306,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意3个不同号码为1注,开奖号码包含所选3个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|04 05 06|08 09 10',
     noRepeat: true,
     noBaozi: true,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 10: 10 })
@@ -329,8 +315,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意4个不同号码为1注,开奖号码包含所选4个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04|04 05 06 07|08 09 10 11',
     noRepeat: true,
     noBaozi: true,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 5: 5 })
@@ -340,8 +324,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意5个不同号码为1注,开奖号码包含所选5个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05|04 05 06 07 08|07 08 09 10 11',
     noRepeat: true,
     noBaozi: true
   },
@@ -350,8 +332,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意6个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06|04 05 06 07 08 09|06 07 08 09 10 11',
     noRepeat: true,
     noBaozi: true
   },
@@ -360,8 +340,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意7个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06 07|04 05 06 07 08 09 10|05 06 07 08 09 10 11',
     noRepeat: true,
     noBaozi: true
   },
@@ -370,8 +348,6 @@ export default {
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 11)
     },
-    rule: '输入(01-11)中任意8个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05 06 07 08|03 04 05 06 07 08 09 10|04 05 06 07 08 09 10 11',
     noRepeat: true,
     noBaozi: true
   }

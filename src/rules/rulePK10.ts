@@ -120,8 +120,6 @@ export default {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: () => 3,
-    rule: '输入（1-10）任意不同3个号码为1注,与开奖号码前三位相同且顺序一致,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 10',
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 10)
     },
@@ -132,8 +130,6 @@ export default {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: () => 4,
-    rule: '输入（1-10）任意不同4个号码为1注,与开奖号码前四位相同且顺序一致,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04|03 04 05 07|07 08 09 10',
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 10)
     },
@@ -144,8 +140,6 @@ export default {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: () => 5,
-    rule: '输入（1-10）任意不同5个号码为1注,与开奖号码前五位相同且顺序一致,即为中奖',
-    placeholder: '输入注单请用空格或竖线隔开 格式范例: 01 02 03 04 05|03 04 05 07 08|06 07 08 09 10',
     getInput: function (input: string) {
       return DanShiInput.getInput.call(this, input, 10)
     },
