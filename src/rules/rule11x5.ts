@@ -1,4 +1,4 @@
-import DanshiInput from '../DanshiInput'
+import InputFilter from '../InputFilter'
 import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../Calculator'
@@ -8,7 +8,7 @@ import Conbinations from '../Conbination'
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const Conbination = new Conbinations()
-const DanShiInput = new DanshiInput()
+const inputFilter = new InputFilter()
 
 const DANMA_TOUMA_ARRAY = ['胆码', '拖码']
 const YI_ER_SAN_ARRAY = ['一位', '二位', '三位']
@@ -49,36 +49,16 @@ export default {
     }
   },
   'sanma-zhixuan-danshi': {
-    betCount: () => 3,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 3)
   },
   'erma-zhixuan-danshi': {
-    betCount: () => 2,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 2)
   },
   'sanma-zuxuan-danshi': {
-    betCount: () => 3,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 3)
   },
   'erma-zuxuan-danshi': {
-    betCount: () => 2,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 2)
   },
   'sanma-zuxuan-fushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true),
@@ -284,71 +264,31 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 9: 4, 45: 10, 165: 20 })
   },
   'renxuandanshi-renxuandanshi-renxuanyi': {
-    betCount: () => 1,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true,
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 1),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 })
   },
   'renxuandanshi-renxuandanshi-renxuaner': {
-    betCount: () => 2,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true,
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 2),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 3: 3, 6: 6, 10: 10 })
   },
   'renxuandanshi-renxuandanshi-renxuansan': {
-    betCount: () => 3,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true,
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 3),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 10: 10 })
   },
   'renxuandanshi-renxuandanshi-renxuansi': {
-    betCount: () => 4,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true,
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 4),
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 5: 5 })
   },
   'renxuandanshi-renxuandanshi-renxuanwu': {
-    betCount: () => 5,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 5)
   },
   'renxuandanshi-renxuandanshi-renxuanliu': {
-    betCount: () => 6,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 6)
   },
   'renxuandanshi-renxuandanshi-renxuanqi': {
-    betCount: () => 7,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 7)
   },
   'renxuandanshi-renxuandanshi-renxuanba': {
-    betCount: () => 8,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 11)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 11, 8)
   }
 }

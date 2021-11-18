@@ -3,13 +3,13 @@ import Calculator from '../Calculator'
 
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { OptionSection, ProfitParams } from '../Interfases'
-import DanshiInput from '../DanshiInput'
+import InputFilter from '../InputFilter'
 import Conbinations from '../Conbination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const calculator = new Calculator()
 const Conbination = new Conbinations()
-const DanShiInput = new DanshiInput()
+const inputFilter = new InputFilter()
 
 const ONE_TO_TEN_ARRAY: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 const TITLE_LABEL_ARRAY: string[] = ['冠军', '亚军', '第三', '第四', '第五', '第六', '第七', '第八', '第九', '第十']
@@ -119,31 +119,17 @@ export default {
   'caipaiwei-zhixuanpk-pk10qiansandanshi': {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
-    betCount: () => 3,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 10)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 10, 3)
   },
   'caipaiwei-zhixuanpk-pk10qiansidanshi': {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
-    betCount: () => 4,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 10)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 10, 4)
   },
   'caipaiwei-zhixuanpk-pk10qianwudanshi': {
     encode: (val: string) => danshiFormatter(val),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: () => 5,
-    getInput: function (input: string) {
-      return DanShiInput.getInput.call(this, input, 10)
-    },
-    noRepeat: true,
-    noBaozi: true
+    getInput: (input: string) => inputFilter.stringFilter(input, 10, 5)
   }
 }

@@ -1,7 +1,3 @@
-interface Counts {
-  [key: string]: number
-}
-
 export default class {
   public static toFixed(num: number, len: number = 1): string {
     let str = num.toString()
@@ -15,18 +11,11 @@ export default class {
     }
   }
 
-  /** 检测字符串数组中，重复最大值 */
-  public static getMaxCount(inputString: string): number {
-    let counts: Counts = {}
+  public static getDuplicate(inputString: string, char?: string): number {
+    let counts: { [key: string]: number } = {}
     inputString.split('').forEach((element) => {
       counts[element] = (counts[element] || 0) + 1
     })
-    return Math.max(...Object.values(counts))
-  }
-
-  /** 检测某个字符串出现的次数 */
-  public static judgeCharRepeatNum(str: string, char: string) {
-    var result = str.match(new RegExp(char, 'g'))
-    return !result ? 0 : result.length
+    return char ? counts[char] || 0 : Math.max(...Object.values(counts))
   }
 }
