@@ -4,11 +4,11 @@ import Calculator from '../Calculator'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { OptionSection, ProfitParams } from '../Interfases'
 import InputFilter from '../InputFilter'
-import Conbinations from '../Conbination'
+import Combination from '../Combination'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const calculator = new Calculator()
-const Conbination = new Conbinations()
+const combination = new Combination()
 const inputFilter = new InputFilter()
 
 const ONE_TO_TEN_ARRAY: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
@@ -89,7 +89,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return Conbination.guanYaJunWrapper.call(this, 1)
+      return combination.guanYaJunWrapper.call(this, 1)
     }
   },
   'caipaiwei-zhixuanpk-qiansanpk': {
@@ -97,7 +97,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return Conbination.guanYaJunWrapper.call(this, 2)
+      return combination.guanYaJunWrapper.call(this, 2)
     }
   },
   'caipaiwei-zhixuanpk-qiansipk': {
@@ -105,7 +105,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return Conbination.guanYaJunWrapper.call(this, 3)
+      return combination.guanYaJunWrapper.call(this, 3)
     }
   },
   'caipaiwei-zhixuanpk-qianwu': {
@@ -113,7 +113,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return Conbination.guanYaJunWrapper.call(this, 4)
+      return combination.guanYaJunWrapper.call(this, 4)
     }
   },
   'caipaiwei-zhixuanpk-pk10qiansandanshi': {

@@ -8,8 +8,8 @@ import { cloneDeep } from 'lodash'
 import { OptionSection, ProfitParams } from './Interfases'
 
 enum LOTTOERY_TYPE {
-  时时彩 = 'ssc', // 时时彩
-  快三 = 'k3', // 快三
+  时时彩 = 'ssc',
+  快三 = 'k3',
   PK10 = 'pk10',
   十一选五 = 'l115'
 }
@@ -44,13 +44,13 @@ export default class {
    */
   selectedBall(num: string, index: number = 0) {
     let selectedData: Array<string> = this.currentRule.betOptions[index].selected
-    let isExist = selectedData.some((element: string) => element == num)
-    if (isExist) {
+    if (selectedData.some((element: string) => element == num)) {
       // 当所选号码已经被选取的情况下
       selectedData = selectedData.filter((element: string) => element != num)
     } else {
       // 当所选号码尚未被选取的情况下
       if (this.currentRule.limit === 1) {
+        // 只能单选
         selectedData = [num]
       } else {
         if (this.currentRule.selectdeLimitFormatter) {
@@ -58,12 +58,11 @@ export default class {
           this.currentRule.selectdeLimitFormatter(num, index)
         } else {
           // 一般选号
-          selectedData.push(String(num))
+          selectedData.push(num)
         }
       }
     }
-    var data = Object.assign({}, this.currentRule.betOptions[index], { selected: selectedData })
-    this.currentRule.betOptions.splice(index, 1, data)
+    this.currentRule.betOptions.splice(index, 1, Object.assign({}, this.currentRule.betOptions[index], { selected: selectedData }))
   }
 
   /**
@@ -73,34 +72,17 @@ export default class {
    * @param {number} index
    * @memberof Lottery
    */
-  quickSelectBall(play: string, index: number) {
+  quickSelectBall(play: string, index: number = 0) {
     let options: Array<string> = this.currentRule.betOptions[index].options
     var obj: { [propName: string]: Array<string> } = {
       全: options,
       大: options.slice(options.length / 2),
       小: options.slice(0, options.length / 2),
-      奇: (function () {
-        var arr: any = []
-        options.forEach((element: string) => {
-          if (Number(element) % 2 !== 0) {
-            arr.push(element)
-          }
-        })
-        return arr
-      })(),
-      偶: (function () {
-        var arr: any = []
-        options.forEach((element: string) => {
-          if (Number(element) % 2 === 0) {
-            arr.push(element)
-          }
-        })
-        return arr
-      })(),
+      奇: options.filter((element: string) => Number(element) % 2 !== 0),
+      偶: options.filter((element: string) => Number(element) % 2 === 0),
       清: []
     }
-    var data = Object.assign({}, this.currentRule.betOptions[index], { selected: obj[play] })
-    this.currentRule.betOptions.splice(index, 1, data)
+    this.currentRule.betOptions.splice(index, 1, Object.assign({}, this.currentRule.betOptions[index], { selected: obj[play] }))
   }
 
   /**
@@ -149,12 +131,8 @@ export default class {
     return this.currentRule.getProfit(data)
   }
 
-  format(input?: string) {
+  format(input?: string): string {
     let rule: any = this.currentRule
-    if (rule.betOptions.length) {
-      return rule.betOptions.map((position: any) => position.selected.map((item: any) => rule.encode(item)).join(','))
-    } else {
-      return ''
-    }
+    return rule.betOptions.length ? rule.betOptions.map((position: any) => position.selected.map((item: any) => rule.encode(item)).join(',')) : "''"
   }
 }

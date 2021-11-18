@@ -11,9 +11,10 @@ export default class {
     }
   }
 
-  public static getDuplicate(inputString: string, char?: string): number {
-    let counts: { [key: string]: number } = {}
-    inputString.split('').forEach((element) => {
+  public static getDuplicate(inputString: string | Array<string>, char?: string): number {
+    const counts: { [key: string]: number } = {}
+    const values: Array<string> = typeof inputString === 'string' ? inputString.split('') : inputString
+    values.forEach((element: string) => {
       counts[element] = (counts[element] || 0) + 1
     })
     return char ? counts[char] || 0 : Math.max(...Object.values(counts))

@@ -1,6 +1,16 @@
 import { OptionSection } from './Interfases'
 
 export default class {
+  public getAllCombination(data: Array<string>, len: number, isRepeat: boolean = false): any {
+    return data.flatMap((element: string, index: number) => {
+      return len === 1 ? element : this.getAllCombination(data.slice(index + (isRepeat ? 0 : 1)), len - 1, isRepeat).flatMap((str: string) => element + str)
+    })
+  }
+
+  public getAllCombinationK3(num: number): Array<string> {
+    return this.getAllCombination(['1', '2', '3', '4', '5', '6'], num, false)
+  }
+
   public getAllPailieZuHeBuTongHao(data: any, len: number, numArr: any, prefix: string | number, isRepeat: boolean = false) {
     for (var i = 0; i < data.length; i++) {
       if (len === 1) {
@@ -29,12 +39,6 @@ export default class {
     var arr: string[] = []
     this.getAllPailieZuHeBuTongHao(tuoma, len - danma.length, arr, '', false)
     return arr.length
-  }
-
-  public getAllPailieZuHeBuTongHaoWrapper(num: number): Array<string> {
-    let data: Array<string> = []
-    this.getAllPailieZuHeBuTongHao([1, 2, 3, 4, 5, 6], num, data, '', false)
-    return data
   }
 
   public getAllPailieZuheGuanYa(data: any, len: number, numArr: any, arr: any) {
