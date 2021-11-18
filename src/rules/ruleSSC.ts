@@ -93,7 +93,7 @@ function getAllPailieZuheListNoBaozi(data: Array<any>, len: number, sumArr: Arra
     var newSum = sum + data[i]
     if (len === 1) {
       // 排除豹子
-      if (Util.judgeCharRepeatNum(newStr, data[i]) !== newStr.length) {
+      if (Util.getDuplicate(newStr, data[i]) !== newStr.length) {
         var newArr = newStr.split('')
         var isExist = numArr.some(function (ele) {
           var flag = ele.every(function (num: any) {
