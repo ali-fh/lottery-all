@@ -122,6 +122,14 @@ export default class {
     return rule.betOptions.length === 0 ? rule.positionbetCount(num, rule.position) : num
   }
 
+  togglePosition(index: number) {
+    let rule: any = this.currentRule
+    console.log(index)
+    const temp: boolean[] = cloneDeep(rule.position)
+    temp[index] = !temp[index]
+    rule.position = temp.filter((element) => element).length < rule.positionLimit ? rule.position : temp
+  }
+
   betFilter(betNumInput: string = '') {
     if (!betNumInput) return
     return this.currentRule.getInput(betNumInput).join('|')

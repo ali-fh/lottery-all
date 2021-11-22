@@ -24,7 +24,10 @@ function danshiFormatter(val: string) {
 export default {
   'zhixuanhezhi-hezhi-guanyahezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(3, 19, false),
-    isSingleNum: true
+    isSingleNum: true,
+    getProfit: function (params: ProfitParams): string {
+      return calculator.getProfitHeZhi(params, this.betOptions[0].selected)
+    }
   },
   'liangmianpan-zhixuan-guanyahezhi': {
     betOptions: betOptionsGenerator.generatBetOptions(['大', '小', '单', '双'], false, ['冠亚和']),
@@ -42,7 +45,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper(this.betOptions, data)
     }
   },
   'liangmianpan-zhixuan-dragonwithtiger': {
@@ -58,18 +61,18 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper(this.betOptions, data)
     }
   },
   'caichehao-dingweidan-dingweidan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, TITLE_LABEL_ARRAY),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return calculator.profitTypeBWrapper.call(this, data)
+      return calculator.profitTypeBWrapper(this.betOptions, data)
     }
   },
   'budingwei-sanxingbudingwei-qiansan': {
@@ -89,7 +92,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return combination.guanYaJunWrapper.call(this, 1)
+      return combination.guanYaJunWrapper(this.betOptions, 1)
     }
   },
   'caipaiwei-zhixuanpk-qiansanpk': {
@@ -97,7 +100,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return combination.guanYaJunWrapper.call(this, 2)
+      return combination.guanYaJunWrapper(this.betOptions, 2)
     }
   },
   'caipaiwei-zhixuanpk-qiansipk': {
@@ -105,7 +108,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return combination.guanYaJunWrapper.call(this, 3)
+      return combination.guanYaJunWrapper(this.betOptions, 3)
     }
   },
   'caipaiwei-zhixuanpk-qianwu': {
@@ -113,7 +116,7 @@ export default {
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: string) => (key === '|' ? ' ' + key : ' ' + String(Number(key) + 1)),
     betCount: function () {
-      return combination.guanYaJunWrapper.call(this, 4)
+      return combination.guanYaJunWrapper(this.betOptions, 4)
     }
   },
   'caipaiwei-zhixuanpk-pk10qiansandanshi': {

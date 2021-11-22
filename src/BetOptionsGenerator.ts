@@ -13,8 +13,19 @@ export default class {
   }
 
   public generatNumberBetOptions(from: number, to: number, doubleDigit: boolean, titles?: Array<string>): Array<OptionSection> {
-    const options: Array<string> = Array.from({ length: to - from + 1 }, (v, i) => i + from).map((element) => (doubleDigit ? ('0' + element).slice(-2) : String(element)))
-    return this.generatBetOptions(options, true, titles ? titles : [''])
+    return this.generatBetOptions(
+      Array.from({ length: to - from + 1 }, (v, i) => i + from).map((element) => (doubleDigit ? ('0' + element).slice(-2) : String(element))),
+      true,
+      titles ? titles : ['']
+    )
+  }
+
+  public generatDanTuoBetOptions(from: number, to: number, doubleDigit: boolean, titles?: Array<string>): Array<OptionSection> {
+    return this.generatBetOptions(
+      Array.from({ length: to - from + 1 }, (v, i) => i + from).map((element) => (doubleDigit ? ('0' + element).slice(-2) : String(element))),
+      false,
+      titles ? titles : ['']
+    )
   }
 
   public generatErTongHao(): Array<OptionSection> {

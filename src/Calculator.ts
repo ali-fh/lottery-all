@@ -47,8 +47,8 @@ export default class {
   }
 
   public profitType11x5(this: any, data: ProfitParams, rules: any) {
-    if (this.list.length > 1) {
-      const test = rules[this.list[0].selected.length - 1]
+    if (this.betOptions.length > 1) {
+      const test = rules[this.betOptions[0].selected.length - 1]
       const basicProfit: string = Util.toFixed(data.prize * data.amountUnit * data.beishu - data.betAmt, 2)
       if (data.betCount) {
         if (test[data.betCount] === 1) {
@@ -86,45 +86,46 @@ export default class {
     }
   }
 
-  public profitTypeBWrapper(this: any, data: ProfitParams) {
+  public profitTypeBWrapper(options: any, data: ProfitParams) {
     let position: number = 0
     let test = [{ '1': 1 }, { '1': 2 }, { '1': 3 }, { '1': 4 }, { '1': 5 }, { '1': 6 }, { '1': 7 }, { '1': 8 }, { '1': 9 }, { '1': 10 }]
-    this.list.forEach((element: OptionSection) => {
+    options.forEach((element: OptionSection) => {
       if (element.selected.length) position++
     })
     return this.profitTypeB(data, test, 1, position)
   }
 
-  profitWrapper(this: any, params: ProfitParams, test: any, limit: number) {
+  profitWrapper(position: any, betOptions: any, params: ProfitParams, test: any, limit: number) {
     let pos = 0
-    const arr = this.position ? this.position : this.list
-
-    arr.forEach((element: any) => {
-      if (this.position) {
-        pos += element
+    ;(position.length ? position : betOptions).forEach((element: any) => {
+      if (position.length) {
+        pos += element ? 1 : 0
       } else {
         if (element.selected.length) pos++
       }
     })
 
-    return this.profitTypeB.call(this, params, test, limit, pos)
+    return this.profitTypeB(params, test, limit, pos)
   }
 
-  getProfitSSC(this: any, params: ProfitParams) {
-    if (this.list.length) {
-      let arr: Array<number> = this.list[0].selected.forEach((element: OptionSection) => Number(params.prize[Number(element)]))
+  getProfitSSC(this: any, params: ProfitParams): string {
+    if (this.betOptions.length) {
+      let arr: Array<number> = this.betOptions[0].selected.flatMap((element: OptionSection) => Number(params.prize[Number(element)]))
+
       arr.sort(function (a, b) {
         return a - b
       })
+
       if (params.betCount === 1) {
         return Util.toFixed(arr[0] * params.amountUnit * params.beishu - params.betAmt, 2)
       } else {
         return `${Util.toFixed(arr[0] * params.amountUnit * params.beishu - params.betAmt, 2)} ~ ${Util.toFixed(arr[arr.length - 1] * params.amountUnit * params.beishu - params.betAmt, 2)}`
       }
     }
+    return '0'
   }
 
-  getProfitZuHe(this: any, params: ProfitParams, times: number) {
+  getProfitZuHe(params: ProfitParams, times: number) {
     let basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
     let maxProfit: string = this.getMaximunProfit(params.prize * params.amountUnit * params.beishu * times, params)
     return `${basicProfit} ~ ${maxProfit}`

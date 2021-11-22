@@ -23,8 +23,8 @@ export default class {
     }
   }
 
-  public getAllPailieZuheListWrapper(this: any, limit: number): number {
-    var arr = this.list[0].selected
+  public getAllPailieZuheListWrapper(selected: string[], limit: number): number {
+    var arr = selected
     if (arr.length < limit) return 0
     var numArr: string[] = []
     this.getAllPailieZuHeBuTongHao(arr, limit, numArr, '', false)
@@ -55,10 +55,10 @@ export default class {
     }
   }
 
-  public zhixuanBetCountWrapper(this: any, num: number, digit: number): number {
+  public zhixuanBetCountWrapper(betOptions: any, num: number, digit: number): number {
     if (num === 0) return 0
     var arr: string[][] = []
-    this.betOptions.forEach(function (element: OptionSection) {
+    betOptions.forEach(function (element: OptionSection) {
       arr.push(element.selected)
     })
     var numArr: string[] = []
@@ -82,9 +82,9 @@ export default class {
     }
   }
 
-  public guanYaJunWrapper(this: any, num: number): number {
+  public guanYaJunWrapper(betOptions: any, num: number): number {
     var arr: [] | any = []
-    this.betOptions.forEach(function (element: OptionSection) {
+    betOptions.forEach(function (element: OptionSection) {
       arr.push(element.selected)
     })
     var numArr: [] | [string[]] = []

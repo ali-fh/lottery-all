@@ -40,8 +40,8 @@ function getPailieByRenxuan(this: any, num: number) {
   return combination.getPailieByRenxuanArr(sum, num)
 }
 
-function positionBet(num: number, position: Array<number>, limit: number) {
-  const total = position.reduce((sum: number, ele: number) => sum + ele, 0)
+function positionBet(num: number, position: Array<boolean>, limit: number) {
+  const total = position.filter((element) => element).length
   return num * getPailieByNoLabel(total, limit)
 }
 
@@ -203,7 +203,7 @@ export default {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
     },
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{ 1: 1 }, { 1: 2 }, { 1: 3 }, { 1: 4 }, { 1: 5 }], 1)
+      return ProfitCalculator.profitWrapper([], this.betOptions, data, [{ 1: 1 }, { 1: 2 }, { 1: 3 }, { 1: 4 }, { 1: 5 }], 1)
     }
   },
   'wuxing-zhixuan-fushi': {
@@ -233,7 +233,7 @@ export default {
       return getPailieByRenxuan.call(this, 2)
     },
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper([], this.betOptions, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zhixuanfushi': {
@@ -242,7 +242,7 @@ export default {
       return getPailieByRenxuan.call(this, 3)
     },
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper([], this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan4-zhixuanfushi': {
@@ -251,45 +251,45 @@ export default {
       return getPailieByRenxuan.call(this, 4)
     },
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper([], this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan2-zhixuandanshi': {
     betCount: () => 2,
-    position: [1, 1, 1, 0, 0],
+    position: [false, false, false, true, true],
     positionLimit: 2,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 2),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 2),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zhixuandanshi': {
     betCount: () => 3,
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan4-zhixuandanshi': {
     betCount: () => 4,
-    position: [0, 1, 1, 1, 1],
+    position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan2-zuxuandanshi': {
     betCount: () => 2,
     noRepeat: true,
     noOrder: true,
-    position: [0, 0, 0, 1, 1],
+    position: [false, false, false, true, true],
     positionLimit: 2,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zusandanshi': {
@@ -298,33 +298,33 @@ export default {
     mustRepeatNum: 2,
     noBaozi: true,
     noOrder: true,
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan3-zuliudanshi': {
     betCount: () => 3,
     noRepeat: true,
     noOrder: true,
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan3-hunhezuxuan': {
     betCount: () => 3,
     noBaozi: true,
     noOrder: true,
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan2-zhixuanhezhi': {
@@ -332,12 +332,12 @@ export default {
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 2, 0)
     },
-    position: [0, 0, 1, 1, 0],
+    position: [false, false, false, true, true],
     positionLimit: 2,
     isSingleNum: true,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 2),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 2),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zhixuanhezhi': {
@@ -345,12 +345,12 @@ export default {
     betCount: function () {
       return getPailieSumOfHezhi(this.betOptions[0].selected, 3, 0)
     },
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
     isSingleNum: true,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan2-zuxuanhezhi': {
@@ -358,12 +358,12 @@ export default {
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 2)
     },
-    position: [0, 0, 0, 1, 1],
+    position: [false, false, false, true, true],
     positionLimit: 2,
     isSingleNum: true,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 2),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 2),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zuxuanhezhi': {
@@ -371,42 +371,42 @@ export default {
     betCount: function () {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
-    position: [0, 0, 1, 1, 1],
-    positionLimit: 2,
+    position: [false, false, true, true, true],
+    positionLimit: 3,
     isSingleNum: true,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 3),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan2-zuxuanfushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2),
-    position: [0, 0, 0, 1, 1],
+    position: [false, false, false, true, true],
     positionLimit: 2,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
     }
   },
   'renxuan-renxuan3-zusanfushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2) * 2,
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 6),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 6),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'renxuan-renxuan4-zuxuan24': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 4),
-    position: [0, 1, 1, 1, 1],
+    position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan4-zuxuan12': {
@@ -414,11 +414,11 @@ export default {
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
-    position: [0, 1, 1, 1, 1],
+    position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan4-zuxuan6': {
@@ -426,11 +426,11 @@ export default {
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     },
-    position: [0, 1, 1, 1, 1],
+    position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan4-zuxuan4': {
@@ -438,21 +438,21 @@ export default {
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     },
-    position: [0, 1, 1, 1, 1],
+    position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 4),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, {}, { 1: 5 }], 4)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
   },
   'renxuan-renxuan3-zuliufushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 3),
-    position: [0, 0, 1, 1, 1],
+    position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<number>) => positionBet(num, position, 6),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 6),
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.profitWrapper.call(this, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
+      return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
   },
   'hezhi-wuxing-hezhi': {
@@ -550,14 +550,14 @@ export default {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),
     betCount: (num: number) => 5 * num,
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.getProfitZuHe.call(this, data, 5)
+      return ProfitCalculator.getProfitZuHe(data, 5)
     }
   },
   'sixing-zhixuan-zuhe': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1)),
     betCount: (num: number) => 4 * num,
     getProfit: function (data: ProfitParams) {
-      return ProfitCalculator.getProfitZuHe.call(this, data, 4)
+      return ProfitCalculator.getProfitZuHe(data, 4)
     }
   },
   'qiansan-zhixuan-zuhe': {
@@ -921,52 +921,52 @@ export default {
     decode: DaXiaoDanShuangDecode
   },
   'quwei-quwei-wumaquweisanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-simaquweisanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-housanquweierxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(2, 3)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(2, 3)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-qiansanquweierxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 1)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 1)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-zhongsanquweierxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
     encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-qujian-wumaqujiansanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, true, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 2 ? QuJian[key] : key)
   },
   'quwei-qujian-simaqujiansanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-housanqujianerxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['百位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, ['百位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-qiansanqujianerxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['万位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, ['万位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-zhongsanqujianerxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, true, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, ['千位']).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
