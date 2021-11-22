@@ -94,7 +94,7 @@ export default class {
   switchRule(ruleName: string) {
     const RULE = require('./assets/rule.json')
     const PLACEHOLDER = require('./assets/placeholder.json')
-    this.currentRule = Object.assign(cloneDeep(ruleBasic), cloneDeep(this.currentLotteryType[ruleName]))
+    this.currentRule = Object.assign({}, cloneDeep(ruleBasic), cloneDeep(this.currentLotteryType[ruleName]))
     if (!this.currentRule.betOptions.length) {
       this.currentRule.rule = RULE[this.categoryName][ruleName]
       this.currentRule.placeholder = PLACEHOLDER[this.categoryName][ruleName]
@@ -119,12 +119,11 @@ export default class {
       // 非单式玩法
       num = rule.betCount(rule.betOptions.reduce((sum: number, item: OptionSection) => sum * item.selected.length, 1))
     }
-    return rule.betOptions.length === 0 ? rule.positionbetCount(num, rule.position) : num
+    return rule.position.length === 0 ? num : rule.positionBetCount(num, rule.position)
   }
 
   togglePosition(index: number) {
-    let rule: any = this.currentRule
-    console.log(index)
+    const rule: any = this.currentRule
     const temp: boolean[] = cloneDeep(rule.position)
     temp[index] = !temp[index]
     rule.position = temp.filter((element) => element).length < rule.positionLimit ? rule.position : temp

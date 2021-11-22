@@ -11,5 +11,5 @@ export default {
   getInput: function (input: string) {
     return new InputFilter().stringFilterSSC.call(this, input)
   },
-  positionbetCount: (num: number): number => num
+  positionBetCount: (num: number): number => num
 }

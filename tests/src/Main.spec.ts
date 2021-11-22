@@ -64,19 +64,12 @@ describe('pk10', () => {
 describe('SSC', () => {
   const main = new Main('ssc')
 
-  test('切换玩法', () => {
-    main.switchRule('yixing-dingweidan-fushi')
-    main.quickSelectBall('全', 0)
-    main.quickSelectBall('全', 1)
-    console.log(main.currentRule.getProfit({ prize: 19.48, amountUnit: 1, beishu: 1, betAmt: 40, betCount: 20 }))
-  })
-
   test('切换玩法和值', () => {
     main.switchRule('renxuan-renxuan4-zuxuan4')
     main.togglePosition(0)
-    expect(main.currentRule.position.filter((element: boolean) => element).length).toBe(5)
-    main.togglePosition(0)
     main.togglePosition(2)
-    expect(main.currentRule.position.filter((element: boolean) => element).length).toBe(4)
+    main.quickSelectBall('全', 0)
+    main.quickSelectBall('全', 1)
+    expect(main.getBetCount()).toBe(90)
   })
 })

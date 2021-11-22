@@ -440,7 +440,9 @@ export default {
     },
     position: [false, true, true, true, true],
     positionLimit: 4,
-    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
+    positionBetCount: function (num: number, position: Array<boolean>) {
+      return positionBet(num, position, 4)
+    },
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, {}, { 1: 5 }], 4)
     }
