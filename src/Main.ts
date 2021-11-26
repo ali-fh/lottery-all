@@ -119,7 +119,7 @@ export default class {
       // 非单式玩法
       num = rule.betCount(rule.betOptions.reduce((sum: number, item: OptionSection) => sum * item.selected.length, 1))
     }
-    return rule.position.length === 0 ? num : rule.positionBetCount(num, rule.position)
+    return rule.position && rule.position.length === 0 ? num : rule.positionBetCount(num, rule.position)
   }
 
   togglePosition(index: number) {
