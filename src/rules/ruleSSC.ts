@@ -261,7 +261,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 2),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan3-zhixuandanshi': {
     betCount: () => 3,
@@ -270,7 +271,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan4-zhixuandanshi': {
     betCount: () => 4,
@@ -279,7 +281,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 4),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, {}, { 1: 5 }], 4)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan2-zuxuandanshi': {
     betCount: () => 2,
@@ -290,7 +293,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, { 1: 3 }, { 1: 6 }, { 1: 10 }], 2)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan3-zusandanshi': {
     betCount: () => 3,
@@ -303,7 +307,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan3-zuliudanshi': {
     betCount: () => 3,
@@ -314,7 +319,8 @@ export default {
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
-    }
+    },
+    encode: (key: string) => Number(key)
   },
   'renxuan-renxuan3-hunhezuxuan': {
     betCount: () => 3,
@@ -465,25 +471,32 @@ export default {
     }
   },
   'wuxing-zhixuan-danshi': {
-    betCount: () => 5
+    betCount: () => 5,
+    encode: (key: string) => Number(key)
   },
   'sixing-zhixuan-danshi': {
-    betCount: () => 4
+    betCount: () => 4,
+    encode: (key: string) => Number(key)
   },
   'qiansan-zhixuan-danshi': {
-    betCount: () => 3
+    betCount: () => 3,
+    encode: (key: string) => Number(key)
   },
   'housan-zhixuan-danshi': {
-    betCount: () => 3
+    betCount: () => 3,
+    encode: (key: string) => Number(key)
   },
   'erxing-zhixuan-houerdanshi': {
-    betCount: () => 2
+    betCount: () => 2,
+    encode: (key: string) => Number(key)
   },
   'erxing-zhixuan-qianerdanshi': {
-    betCount: () => 2
+    betCount: () => 2,
+    encode: (key: string) => Number(key)
   },
   'qiansan-zuxuan-zusandanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -491,6 +504,7 @@ export default {
   },
   'zhongsan-zuxuan-zusandanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -498,6 +512,7 @@ export default {
   },
   'housan-zuxuan-zusandanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     isNeedRepeat: true,
     mustRepeatNum: 2,
     noBaozi: true,
@@ -505,11 +520,13 @@ export default {
   },
   'qiansan-zuxuan-zuliudanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noRepeat: true,
     noOrder: true
   },
   'zhongsan-zuxuan-zuliudanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noRepeat: true,
     noOrder: true
   },
@@ -520,33 +537,39 @@ export default {
   },
   'erxing-zuxuan-houerdanshi': {
     betCount: () => 2,
+    encode: (key: string) => Number(key),
     noRepeat: true,
     noOrder: true,
     noBaozi: true
   },
   'erxing-zuxuan-qianerdanshi': {
     betCount: () => 2,
+    encode: (key: string) => Number(key),
     noRepeat: true,
     noBaozi: true,
     noOrder: true
   },
   'qiansan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noBaozi: true,
     noOrder: true
   },
   'zhongsan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noBaozi: true,
     noOrder: true
   },
   'housan-zuxuan-hunhezuxuan': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noBaozi: true,
     noOrder: true
   },
   'zhongsan-zhixuan-danshi': {
-    betCount: () => 3
+    betCount: () => 3,
+    encode: (key: string) => Number(key)
   },
   'wuxing-zhixuan-zuhe': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY),

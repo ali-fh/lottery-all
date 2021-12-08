@@ -2,7 +2,7 @@
   "pk10": {
     "caipaiwei-zhixuanpk-pk10qiansandanshi": "输入（1-10）任意不同3个号码为1注,与开奖号码前三位相同且顺序一致,即为中奖",
     "caipaiwei-zhixuanpk-pk10qiansidanshi": "输入（1-10）任意不同4个号码为1注,与开奖号码前四位相同且顺序一致,即为中奖",
-    "renxuan-renxuan3-zusandanshi": "输入（1-10）任意不同5个号码为1注,与开奖号码前五位相同且顺序一致,即为中奖"
+    "caipaiwei-zhixuanpk-pk10qianwudanshi": "输入（1-10）任意不同5个号码为1注,与开奖号码前五位相同且顺序一致,即为中奖"
   },
   "l115": {
     "sanma-zhixuan-danshi": "输入(01-11)任意3个号码1注,与开奖号码完全相同(且顺序一致),即为中奖",
@@ -15,7 +15,7 @@
     "renxuandanshi-renxuandanshi-renxuansi": "输入(01-11)中任意4个不同号码为1注,开奖号码包含所选4个号码,即为中奖",
     "renxuandanshi-renxuandanshi-renxuanwu": "输入(01-11)中任意5个不同号码为1注,开奖号码包含所选5个号码,即为中奖",
     "renxuandanshi-renxuandanshi-renxuanliu": "输入(01-11)中任意6个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖",
-    "renxuandanshi-renxuandanshi-renxuanqi'": "输入(01-11)中任意7个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖",
+    "renxuandanshi-renxuandanshi-renxuanqi": "输入(01-11)中任意7个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖",
     "renxuandanshi-renxuandanshi-renxuanba": "输入(01-11)中任意8个不同号码为1注,开奖号码包含所选号码中任意5个号码,即为中奖"
   },
   "ssc": {

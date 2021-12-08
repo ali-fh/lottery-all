@@ -131,7 +131,7 @@ export default class {
 
   betFilter(betNumInput: string = '') {
     if (!betNumInput) return
-    return this.currentRule.getInput(betNumInput).join('|')
+    return this.currentRule.getInput(betNumInput)
   }
 
   getProfit(data: ProfitParams) {
@@ -140,6 +140,19 @@ export default class {
 
   format(input?: string): string {
     let rule: any = this.currentRule
-    return rule.betOptions.length ? rule.betOptions.map((position: any) => position.selected.map((item: any) => rule.encode(item)).join(',')) : "''"
+    if (rule.betOptions.length) {
+      if (rule.isSingleNum) {
+        return rule.betOptions[0].selected
+      } else {
+        return rule.betOptions.map((position: any) => position.selected.map((item: any) => rule.encode(item)).join(','))
+      }
+    } else {
+      return this.betFilter(input).map((element: string) =>
+        element
+          .split(' ')
+          .map((num: string) => rule.encode(num))
+          .join(',')
+      )
+    }
   }
 }
