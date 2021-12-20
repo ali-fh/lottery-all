@@ -11,7 +11,8 @@
     import lottery from "lottery-logic"
     
     // 彩种代号 时时彩＝ssc, PK10＝pk10, 11选5＝l115, 快3＝k3
-    const lottery = new lottery("彩种代号","玩法代号")
+    // 语系 cn=中文, en=英文
+    const lottery = new lottery("彩种代号","语系","密钥")
 方法
 ------
 + `switchRule(ruleName: string)` 切换玩法
