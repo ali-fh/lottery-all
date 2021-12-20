@@ -13,6 +13,17 @@
     // 彩种代号 时时彩＝ssc, PK10＝pk10, 11选5＝l115, 快3＝k3
     // 语系 cn=中文, en=英文
     const lottery = new lottery("彩种代号","语系","密钥")
+属性
+------
++ `currentRule` 当前玩法资讯
+````
+currentRule.betOptions = {
+    label, // type=string,位置标题
+    options // type=Array<string> 选号选项
+    selected: [], // type=Array<string> 倍选中选项
+    quickSupport // type=boolean 倍选中选项快选
+}
+````    
 方法
 ------
 + `switchRule(ruleName: string)` 切换玩法
@@ -27,4 +38,17 @@
     + `betNumInput` 单式下注内容，若当前玩法为复式玩法则不传
 + `getProfit(data: ProfitParams)` 取得玩家预期获利
     + `data` 传入内容请符合ProfitParams格式
-    + ProfitParams
+````
+const params = {
+    prize, // 奖金组
+    amountUnit, // 下注单注金额单位
+    beishu, // 下注倍数
+    betAmt, // 下注金额
+    betCount: bet || 0 // 注数
+}
+````
++ `betFilter(betNumInput: string = '')` 单式下注验证、过滤
+    + `betNumInput` 下注内容
++ `format(betNumInput: string = '')`
++ `togglePosition(index: number)` 「任选玩法」位置开关
+    + `index` 第几位数
