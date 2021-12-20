@@ -3,11 +3,11 @@ import Calculator from '../Calculator'
 import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
 import { ProfitParams } from '../Interfases'
 import Combination from '../Combination'
+import { I18n } from '../i18n'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const combination = new Combination()
-
 export default {
   // 和值
   'k3-k3-hezhi': {
@@ -18,7 +18,7 @@ export default {
   },
   // 大小单双
   'k3-k3-daxiaodanshuang': {
-    betOptions: betOptionsGenerator.generatBetOptions(['大', '小', '单', '双']),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.DaXiaoDanXhuang')),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },

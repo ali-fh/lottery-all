@@ -3,6 +3,7 @@ import ruleK3 from './rules/RuleK3'
 import rulePK10 from './rules/RulePK10'
 import rule11x5 from './rules/Rule11x5'
 import ruleSSC from './rules/RuleSSC'
+import { I18n } from './i18n'
 
 import { cloneDeep } from 'lodash'
 import { OptionSection, ProfitParams } from './Interfases'
@@ -18,7 +19,8 @@ export default class {
   public currentRule: { [propName: string]: any } = {}
   private categoryName: string = ''
 
-  constructor(category: string) {
+  constructor(category: string, language: string = 'cn') {
+    I18n.switchLanguage(language)
     this.categoryName = category
     switch (category) {
       case LOTTOERY_TYPE.快三:
@@ -91,13 +93,11 @@ export default class {
    * @param {string} ruleName 玩法名称
    * @memberof Lottery
    */
-  switchRule(ruleName: string) {
-    const RULE = require('./assets/rule.json')
-    const PLACEHOLDER = require('./assets/placeholder.json')
+  async switchRule(ruleName: string) {
     this.currentRule = Object.assign({}, cloneDeep(ruleBasic), cloneDeep(this.currentLotteryType[ruleName]))
     if (!this.currentRule.betOptions.length) {
-      this.currentRule.rule = RULE[this.categoryName][ruleName]
-      this.currentRule.placeholder = PLACEHOLDER[this.categoryName][ruleName]
+      this.currentRule.rule = I18n.getText(`rule.${this.categoryName}.${ruleName}`)
+      this.currentRule.placeholder = I18n.getText(`placeholder.${this.categoryName}.${ruleName}`)
     }
   }
 

@@ -57,7 +57,7 @@ describe('pk10', () => {
   test('切换玩法', () => {
     main.switchRule('caipaiwei-zhixuanpk-pk10qiansandanshi')
     expect(main.currentRule.rule).toBe('输入（1-10）任意不同3个号码为1注,与开奖号码前三位相同且顺序一致,即为中奖')
-    expect(main.currentRule.placeholder).toBe('输入注单请用空格或竖线隔开 格式范例: 01 02 03|03 04 05|07 08 10')
+    expect(main.currentRule.placeholder).toBe('输入注单请使用空格隔开，分割符号为回车\n格式范例: \n01 02 03\n03 04 05\n07 08 10')
   })
 })
 

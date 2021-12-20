@@ -4,14 +4,15 @@ import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../Calculator'
 import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
 import Combination from '../Combination'
+import { I18n } from '../i18n'
 
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const combination = new Combination()
 const inputFilter = new InputFilter()
 
-const DANMA_TOUMA_ARRAY = ['胆码', '拖码']
-const YI_ER_SAN_ARRAY = ['一位', '二位', '三位']
+const DANMA_TOUMA_ARRAY = I18n.getText('options.DanMaTouMa')
+const YI_ER_SAN_ARRAY = I18n.getText('options.YiErSanPositon')
 
 function dantuoSelectLimit(this: any, num: string, index: number, danmaLen: number) {
   var danmaArr: Array<string> = this.betOptions[0].selected
@@ -204,7 +205,7 @@ export default {
     }
   },
   'quweixing-quweixing-dingdanshuang': {
-    betOptions: betOptionsGenerator.generatBetOptions(['5单0双', '4单1双', '3单2双', '2单3双', '1单4双', '0单5双']),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.DingDanShuang')),
     encode: DingDanShuangEncode,
     decode: DingDanShuangDecode
   },

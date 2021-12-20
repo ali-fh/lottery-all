@@ -46,7 +46,7 @@ describe.each([
     'budingwei-budingwei-budingwei': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
     'dingweidan-dingweidan-dingweidan': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
     'quweixing-quweixing-dingdanshuang': ['5单0双', '4单1双', '3单2双', '2单3双', '1单4双', '0单5双'],
-    'quweixing-quweixing-caizhongwei': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
+    'quweixing-quweixing-caizhongwei': ['3', '4', '5', '6', '7', '8', '9'],
     'renxuanfushi-renxuanfushi-renxuanyi': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
     'renxuanfushi-renxuanfushi-renxuaner': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
     'renxuanfushi-renxuanfushi-renxuansan': ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
