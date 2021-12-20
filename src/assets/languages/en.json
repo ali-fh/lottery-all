@@ -96,7 +96,6 @@
     }
   },
   "options": {
-    "DaXiaoDanXhuang": ["Big", "Small", "Even", "Odd"],
     "Rank": ["冠军", "亚军", "第三", "第四", "第五", "第六", "第七", "第八", "第九", "第十"],
     "GuanYaHe": ["冠亚和"],
     "FirstThree": "前三",
@@ -110,15 +109,23 @@
     "Digits": ["万位", "千位", "百位", "十位", "个位"],
     "QuJian": ["一区(0-1)", "二区(2-3)", "三区(4-5)", "四区(6-7)", "五区(8-9)"],
     "DaXiao": ["小(0-4)", "大(5-9)"],
-    "Single": "单号",
-    "Double": "二重号",
+    "SingleNumber": "单号",
+    "DoubleNumber": "二重号",
     "Triple": "三重号",
     "Quadruple": "四重号",
     "TeShuHaoMa": ["豹子", "顺子", "对子"],
-    "TenThousand": "Ten Thousand",
-    "Thousand": "Thousand",
-    "Hundred": "Hundred",
-    "Ten": "Ten",
-    "Digit": "Digit"
+    "TenThousand": "万",
+    "Thousand": "千",
+    "Hundred": "百",
+    "Ten": "十",
+    "Digit": "个",
+    "All": "全",
+    "Big": "大",
+    "Small": "小",
+    "Odd": "奇",
+    "Even": "偶",
+    "Single": "单",
+    "Double": "双",
+    "Clear": "清"
   }
 }

@@ -11,8 +11,8 @@ const ProfitCalculator = new Calculator()
 const combination = new Combination()
 const inputFilter = new InputFilter()
 
-const DANMA_TOUMA_ARRAY = I18n.getText('options.DanMaTouMa')
-const YI_ER_SAN_ARRAY = I18n.getText('options.YiErSanPositon')
+const DANMA_TOUMA_ARRAY = I18n.msg['options']['DanMaTouMa']
+const YI_ER_SAN_ARRAY = I18n.msg['options']['YiErSanPositon']
 
 function dantuoSelectLimit(this: any, num: string, index: number, danmaLen: number) {
   var danmaArr: Array<string> = this.betOptions[0].selected
@@ -35,7 +35,6 @@ function dantuoSelectLimit(this: any, num: string, index: number, danmaLen: numb
     }
   }
 }
-
 export default {
   'sanma-zhixuan-fushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 11, true, YI_ER_SAN_ARRAY),
@@ -205,7 +204,7 @@ export default {
     }
   },
   'quweixing-quweixing-dingdanshuang': {
-    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.DingDanShuang')),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['DingDanShuang']),
     encode: DingDanShuangEncode,
     decode: DingDanShuangDecode
   },

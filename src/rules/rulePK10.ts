@@ -13,9 +13,9 @@ const combination = new Combination()
 const inputFilter = new InputFilter()
 
 const ONE_TO_TEN_ARRAY: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-const TITLE_LABEL_ARRAY: string[] = I18n.getText('options.Rank')
-const DA_XIAO_DAN_XHUANG: string[] = I18n.getText('options.DaXiaoDanXhuang')
-const GUAN_YA_HE: string[] = I18n.getText('options.GuanYaHe')
+const TITLE_LABEL_ARRAY: string[] = I18n.msg['options']['Rank']
+const DA_XIAO_DAN_XHUANG: string[] = [I18n.msg['options']['Big'], I18n.msg['options']['Small'], I18n.msg['options']['Single'], I18n.msg['options']['Double']]
+const GUAN_YA_HE: string[] = I18n.msg['options']['GuanYaHe']
 
 function danshiFormatter(val: string) {
   return val
@@ -58,7 +58,7 @@ export default {
       if (/[^0-9]/.test(key)) {
         return key
       }
-      return index + I18n.getText('options.Dragon') + (Number(key) + 1) + I18n.getText('options.Tiger')
+      return index + I18n.msg['options']['Dragon']('options.Dragon') + (Number(key) + 1) + I18n.msg['options']['Tiger']('options.Tiger')
     },
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
@@ -79,13 +79,13 @@ export default {
     }
   },
   'budingwei-sanxingbudingwei-qiansan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, [I18n.getText('options.FirstThree')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, [I18n.msg['options']['FirstThree']]),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
     getProfit: (data: ProfitParams) => calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'budingwei-sanxingbudingwei-housan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, [I18n.getText('options.LastThree')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(1, 10, false, [I18n.msg['options']['LastThree']]),
     encode: (key: string): number => ONE_TO_TEN_ARRAY.indexOf(key),
     decode: (key: number) => ONE_TO_TEN_ARRAY[key],
     getProfit: (data: ProfitParams) => calculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })

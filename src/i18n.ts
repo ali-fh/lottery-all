@@ -1,18 +1,12 @@
-import cn from './assets/languages/cn.json'
-import en from './assets/languages/en.json'
-
-export class I18n {
-  static language: { [propName: string]: any } = { cn, en }
-  static current: string = 'cn'
-
-  static switchLanguage(lanCode: string) {
-    // I18n.current = lanCode
-    I18n.current = { ...I18n.language[lanCode] }
+export namespace I18n {
+  const language: { [propName: string]: any } = {
+    cn: require('./assets/languages/cn.json'),
+    en: require('./assets/languages/en.json')
   }
 
-  static getText(path: string) {
-    let result: any = I18n.language[I18n.current]
-    path.split('.').forEach((element) => (result = result[element]))
-    return result
+  export let msg: { [propName: string]: any } = language.cn
+
+  export function switchLanguage(lanCode: string) {
+    msg = language[lanCode]
   }
 }

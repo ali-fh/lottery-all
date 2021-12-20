@@ -3,10 +3,9 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import copy from 'rollup-plugin-copy-assets'
 import nodeResolve from 'rollup-plugin-node-resolve'
-import json from '@rollup/plugin-json'
 
 export default {
-  input: './src/Main.ts',
+  input: './src/index.ts',
   output: [
     {
       format: 'cjs',
@@ -18,7 +17,6 @@ export default {
     }
   ],
   plugins: [
-    json(),
     terser(),
     typescript({
       exclude: 'node_modules/**',

@@ -8,6 +8,7 @@ import { I18n } from '../i18n'
 const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const combination = new Combination()
+
 export default {
   // 和值
   'k3-k3-hezhi': {
@@ -18,7 +19,7 @@ export default {
   },
   // 大小单双
   'k3-k3-daxiaodanshuang': {
-    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.DaXiaoDanXhuang')),
+    betOptions: betOptionsGenerator.generatBetOptions([I18n.msg['options']['Big'], I18n.msg['options']['Small'], I18n.msg['options']['Single'], I18n.msg['options']['Double']]),
     encode: DaXiaoDanShuangEncode,
     decode: DaXiaoDanShuangDecode
   },

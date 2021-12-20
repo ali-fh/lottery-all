@@ -2,9 +2,11 @@ import Main from '../../src/Main'
 import inquery from '../data/inquiry-K3.json'
 
 describe('快三', () => {
-  const main = new Main('k3')
+  const main = new Main('k3', 'cn')
+
   test('切换玩法', () => {
     main.switchRule('k3-k3-daxiaodanshuang')
+    expect(main.currentRule.betOptions[0].options).toStrictEqual(['大', '小', '单', '双'])
   })
 
   test('快捷选号', () => {
@@ -52,7 +54,7 @@ describe('快三', () => {
 })
 
 describe('pk10', () => {
-  const main = new Main('pk10')
+  const main = new Main('pk10', 'cn')
 
   test('切换玩法', () => {
     main.switchRule('caipaiwei-zhixuanpk-pk10qiansandanshi')
@@ -62,7 +64,7 @@ describe('pk10', () => {
 })
 
 describe('SSC', () => {
-  const main = new Main('ssc')
+  const main = new Main('ssc', 'cn')
 
   test('切换玩法和值', () => {
     main.switchRule('renxuan-renxuan4-zuxuan4')

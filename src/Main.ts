@@ -19,7 +19,7 @@ export default class {
   public currentRule: { [propName: string]: any } = {}
   private categoryName: string = ''
 
-  constructor(category: string, language: string = 'cn') {
+  constructor(category: string, language: string) {
     I18n.switchLanguage(language)
     this.categoryName = category
     switch (category) {
@@ -75,14 +75,14 @@ export default class {
    * @memberof Lottery
    */
   quickSelectBall(play: string, index: number = 0) {
-    let options: Array<string> = this.currentRule.betOptions[index].options
-    var obj: { [propName: string]: Array<string> } = {
-      全: options,
-      大: options.slice(options.length / 2),
-      小: options.slice(0, options.length / 2),
-      奇: options.filter((element: string) => Number(element) % 2 !== 0),
-      偶: options.filter((element: string) => Number(element) % 2 === 0),
-      清: []
+    const options: Array<string> = this.currentRule.betOptions[index].options
+    const obj: { [propName: string]: Array<string> } = {
+      [I18n.msg['options']['All']]: options,
+      [I18n.msg['options']['Big']]: options.slice(options.length / 2),
+      [I18n.msg['options']['Small']]: options.slice(0, options.length / 2),
+      [I18n.msg['options']['Odd']]: options.filter((element: string) => Number(element) % 2 !== 0),
+      [I18n.msg['options']['Even']]: options.filter((element: string) => Number(element) % 2 === 0),
+      [I18n.msg['options']['Clear']]: []
     }
     this.currentRule.betOptions.splice(index, 1, Object.assign({}, this.currentRule.betOptions[index], { selected: obj[play] }))
   }
@@ -96,8 +96,8 @@ export default class {
   async switchRule(ruleName: string) {
     this.currentRule = Object.assign({}, cloneDeep(ruleBasic), cloneDeep(this.currentLotteryType[ruleName]))
     if (!this.currentRule.betOptions.length) {
-      this.currentRule.rule = I18n.getText(`rule.${this.categoryName}.${ruleName}`)
-      this.currentRule.placeholder = I18n.getText(`placeholder.${this.categoryName}.${ruleName}`)
+      this.currentRule.rule = I18n.msg['rule'][this.categoryName][ruleName]
+      this.currentRule.placeholder = I18n.msg['placeholder'][this.categoryName][ruleName]
     }
   }
 

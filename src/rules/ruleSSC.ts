@@ -12,11 +12,11 @@ const betOptionsGenerator = new BetOptionsGenerator()
 const ProfitCalculator = new Calculator()
 const combination = new Combination()
 
-const DIGIT_ARRAY = I18n.getText('options.Digits')
-const DA_XIAO_DAN_XHUANG_ARRAY = I18n.getText('options.DaXiaoDanXhuang')
-const LONG_HU_HE_ARRAY = [I18n.getText('options.Dragon'), I18n.getText('options.Tiger'), I18n.getText('options.Tie')]
-const QUJIAN_ARRAY = I18n.getText('options.QuJian')
-const DA_XIAO_ARRAY = I18n.getText('options.DaXiao')
+const DIGIT_ARRAY = I18n.msg['options']['Digits']
+const DA_XIAO_DAN_XHUANG_ARRAY = [I18n.msg['options']['Big'], I18n.msg['options']['Small'], I18n.msg['options']['Single'], I18n.msg['options']['Double']]
+const LONG_HU_HE_ARRAY = [I18n.msg['options']['Dragon'], I18n.msg['options']['Tiger'], I18n.msg['options']['Tie']]
+const QUJIAN_ARRAY = I18n.msg['options']['QuJian']
+const DA_XIAO_ARRAY = I18n.msg['options']['DaXiao']
 
 enum QuJian {
   '一区(0-1)',
@@ -417,7 +417,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan12': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     },
@@ -429,7 +429,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan6': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     },
@@ -441,7 +441,7 @@ export default {
     }
   },
   'renxuan-renxuan4-zuxuan4': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Triple'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     },
@@ -648,55 +648,55 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 4: 4, 6: 6, 10: 10 })
   },
   'wuxing-zuxuan-zuxuan60': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 3)
     }
   },
   'sixing-zuxuan-zuxuan12': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     }
   },
   'wuxing-zuxuan-zuxuan30': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[1].selected, this.betOptions[0].selected, 2)
     }
   },
   'wuxing-zuxuan-zuxuan20': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Triple'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 2)
     }
   },
   'sixing-zuxuan-zuxuan4': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Triple'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'wuxing-zuxuan-zuxuan10': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Triple'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'wuxing-zuxuan-zuxuan5': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Triple'), I18n.getText('options.Double')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['DoubleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
   },
   'sixing-zuxuan-zuxuan6': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Quadruple'), I18n.getText('options.Single')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Quadruple'], I18n.msg['options']['SingleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     }
   },
   'qiansan-zuxuan-zusan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.getText('options.Double')]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2) * 2
     }
@@ -899,19 +899,19 @@ export default {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false)
   },
   'qiansan-qita-teshuhaoma': {
-    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.TeShuHaoMa')),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'zhongsan-qita-teshuhaoma': {
-    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.TeShuHaoMa')),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'housan-qita-teshuhaoma': {
-    betOptions: betOptionsGenerator.generatBetOptions(I18n.getText('options.TeShuHaoMa')),
+    betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
     decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
@@ -977,37 +977,37 @@ export default {
     decode: (key: number, index: number) => (index < 2 ? QuJian[key] : key)
   },
   'quwei-qujian-simaqujiansanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.getText('options.Digits')[1]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][1]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-housanqujianerxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.getText('options.Digits')[2]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][2]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-qiansanqujianerxing': {
     betOptions: betOptionsGenerator
-      .generatBetOptions(QUJIAN_ARRAY, false, [I18n.getText('options.Digits')[0]])
+      .generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][0]])
       .concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-zhongsanqujianerxing': {
     betOptions: betOptionsGenerator
-      .generatBetOptions(QUJIAN_ARRAY, false, [I18n.getText('options.Digits')[1]])
+      .generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][1]])
       .concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
   },
-  'longhu-longhuhe-wanqian': generatLongHuHeRule(`${I18n.getText('options.TenThousand')}:${I18n.getText('options.Thousand')}`),
-  'longhu-longhuhe-wanbai': generatLongHuHeRule(`${I18n.getText('options.TenThousand')}:${I18n.getText('options.Hundred')}`),
-  'longhu-longhuhe-wanshi': generatLongHuHeRule(`${I18n.getText('options.TenThousand')}:${I18n.getText('options.Ten')}`),
-  'longhu-longhuhe-wange': generatLongHuHeRule(`${I18n.getText('options.TenThousand')}:${I18n.getText('options.Digit')}`),
-  'longhu-longhuhe-qianbai': generatLongHuHeRule(`${I18n.getText('options.Thousand')}:${I18n.getText('options.Hundred')}`),
-  'longhu-longhuhe-qianshi': generatLongHuHeRule(`${I18n.getText('options.Thousand')}:${I18n.getText('options.Ten')}`),
-  'longhu-longhuhe-qiange': generatLongHuHeRule(`${I18n.getText('options.Thousand')}:${I18n.getText('options.Digit')}`),
-  'longhu-longhuhe-baishi': generatLongHuHeRule(`${I18n.getText('options.Hundred')}:${I18n.getText('options.Ten')}`),
-  'longhu-longhuhe-baige': generatLongHuHeRule(`${I18n.getText('options.Hundred')}:${I18n.getText('options.Digit')}`),
-  'longhu-longhuhe-shige': generatLongHuHeRule(`${I18n.getText('options.Ten')}:${I18n.getText('options.Digit')}`)
+  'longhu-longhuhe-wanqian': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Thousand']}`),
+  'longhu-longhuhe-wanbai': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Hundred']}`),
+  'longhu-longhuhe-wanshi': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Ten']}`),
+  'longhu-longhuhe-wange': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Digit']}`),
+  'longhu-longhuhe-qianbai': generatLongHuHeRule(`${I18n.msg['options']['Thousand']}:${I18n.msg['options']['Hundred']}`),
+  'longhu-longhuhe-qianshi': generatLongHuHeRule(`${I18n.msg['options']['Thousand']}:${I18n.msg['options']['Ten']}`),
+  'longhu-longhuhe-qiange': generatLongHuHeRule(`${I18n.msg['options']['Thousand']}:${I18n.msg['options']['Digit']}`),
+  'longhu-longhuhe-baishi': generatLongHuHeRule(`${I18n.msg['options']['Hundred']}:${I18n.msg['options']['Ten']}`),
+  'longhu-longhuhe-baige': generatLongHuHeRule(`${I18n.msg['options']['Hundred']}:${I18n.msg['options']['Digit']}`),
+  'longhu-longhuhe-shige': generatLongHuHeRule(`${I18n.msg['options']['Ten']}:${I18n.msg['options']['Digit']}`)
 }

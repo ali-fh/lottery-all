@@ -1,4 +1,5 @@
 import { OptionSection } from './Interfases'
+import { I18n } from './i18n'
 
 export default class {
   public generatBetOptions(options: Array<string>, quickSupport: boolean = false, digitLabels: Array<string> = ['']): Array<OptionSection> {
@@ -46,7 +47,7 @@ export default class {
 
       for (var i = 1; i <= 10; i++) {
         const num = index + 1
-        if (num !== i) optionsArray.push(num + '龙' + i + '虎')
+        if (num !== i) optionsArray.push(num + I18n.msg['options']['Dragon'] + i + I18n.msg['options']['Tiger'])
       }
 
       return this.generatBetOptions(optionsArray, false, labelArray.slice(index, index + 1))[0]
