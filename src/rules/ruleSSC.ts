@@ -948,7 +948,7 @@ export default {
   },
   'quwei-quwei-wumaquweisanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 2 ? DaXiao[key] : key),
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-simaquweisanxing': {

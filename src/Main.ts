@@ -144,7 +144,7 @@ export default class {
       if (rule.isSingleNum) {
         return rule.betOptions[0].selected
       } else {
-        return rule.betOptions.map((position: any) => position.selected.map((item: any) => rule.encode(item)).join(','))
+        return rule.betOptions.map((position: any, index: number) => position.selected.map((item: any) => rule.encode(item, index)).join(','))
       }
     } else {
       return this.betFilter(input).map((element: string) =>
