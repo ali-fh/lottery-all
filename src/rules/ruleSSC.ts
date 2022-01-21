@@ -597,7 +597,7 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
   'housan-zhixuan-zuhe': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(4)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2)),
     betCount: (num: number) => 3 * num,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
