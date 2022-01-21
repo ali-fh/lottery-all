@@ -18,7 +18,7 @@ export default class {
   }
 
   profitTypeA(params: ProfitParams, test: any): string {
-    const basicProfit = Util.toFixed(params.prize * params.amountUnit * params.beishu - params.betAmt, 2)
+    const basicProfit = (params.prize * params.amountUnit * params.beishu - params.betAmt).toFixed(2)
 
     if (params.betCount === 1) {
       return basicProfit
