@@ -131,8 +131,8 @@ export default class {
     return `${basicProfit} ~ ${maxProfit}`
   }
 
-  profitTypeE(params: ProfitParams, basicProfit: string) {
-    let maxProfit: string = this.getMaximunProfit(params.prize * params.amountUnit * params.beishu, params)
+  profitTypeE(params: ProfitParams, basicProfit: string, times: number = 1) {
+    let maxProfit: string = this.getMaximunProfit(params.prize * params.amountUnit * params.beishu * times, params)
     return `${basicProfit} ~ ${maxProfit}`
   }
 }

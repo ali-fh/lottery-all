@@ -772,7 +772,7 @@ export default {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
     isSingleNum: true,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2), 2)
   },
   'zhongsan-zuxuan-hezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 26, false),
@@ -780,7 +780,7 @@ export default {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
     isSingleNum: true,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2), 2)
   },
   'housan-zuxuan-hezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 26, false),
@@ -788,7 +788,7 @@ export default {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
     isSingleNum: true,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2), 2)
   },
   'erxing-zuxuan-houerhezhi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(1, 17, false),
