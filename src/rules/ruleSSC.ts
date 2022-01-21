@@ -329,6 +329,7 @@ export default {
     noOrder: true,
     position: [false, false, true, true, true],
     positionLimit: 3,
+    encode: (key: string) => Number(key),
     positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, [], data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
