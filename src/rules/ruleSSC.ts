@@ -214,7 +214,7 @@ export default {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1))
   },
   'qiansan-zhixuan-fushi': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(0, 3))
   },
   'zhongsan-zhixuan-fushi': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 4))
@@ -587,7 +587,7 @@ export default {
     }
   },
   'qiansan-zhixuan-zuhe': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2)),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(0, 3)),
     betCount: (num: number) => 3 * num,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3 })
   },
