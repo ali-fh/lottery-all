@@ -678,7 +678,7 @@ export default {
     }
   },
   'wuxing-zuxuan-zuxuan10': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['SingleNumber']]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Triple'], I18n.msg['options']['DoubleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoDanhao(this.betOptions[0].selected, this.betOptions[1].selected, 1)
     }
