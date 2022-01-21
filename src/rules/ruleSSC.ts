@@ -401,7 +401,7 @@ export default {
     betCount: (num: number) => getPailieByNoLabel(num, 2) * 2,
     position: [false, false, true, true, true],
     positionLimit: 3,
-    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 6),
+    positionBetCount: (num: number, position: Array<boolean>) => positionBet(num, position, 3),
     getProfit: function (data: ProfitParams) {
       return ProfitCalculator.profitWrapper(this.position, this.betOptions, data, [{}, {}, {}, { 1: 4 }, { 1: 10 }], 3)
     }
