@@ -972,7 +972,7 @@ export default {
     decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-qujian-wumaqujiansanxing': {
-    betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
+    betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key),
     decode: (key: number, index: number) => (index < 2 ? QuJian[key] : key)
   },
