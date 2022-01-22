@@ -691,7 +691,7 @@ export default {
     }
   },
   'sixing-zuxuan-zuxuan6': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['Quadruple'], I18n.msg['options']['DoubleNumber']]),
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false, [I18n.msg['options']['DoubleNumber']]),
     betCount: function () {
       return getPailieOfErchonghaoSingle(this.betOptions[0].selected, 2)
     }
