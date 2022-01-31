@@ -534,6 +534,7 @@ export default {
   },
   'housan-zuxuan-zuliudanshi': {
     betCount: () => 3,
+    encode: (key: string) => Number(key),
     noRepeat: true,
     noOrder: true
   },
