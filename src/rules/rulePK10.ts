@@ -58,7 +58,7 @@ export default {
       if (/[^0-9]/.test(key)) {
         return key
       }
-      return index + I18n.msg['options']['Dragon']('options.Dragon') + (Number(key) + 1) + I18n.msg['options']['Tiger']('options.Tiger')
+      return index + I18n.msg['options']['Dragon'] + (Number(key) + 1) + I18n.msg['options']['Tiger']
     },
     betCount: function () {
       return this.betOptions.reduce((sum: number, element: OptionSection) => sum + element.selected.length, 0)
