@@ -26,6 +26,14 @@ enum QuJian {
   '五区(8-9)'
 }
 
+enum QuJianForShow {
+  '一区',
+  '二区',
+  '三区',
+  '四区',
+  '五区'
+}
+
 enum DaXiao {
   '小(0-4)',
   '大(5-9)'
@@ -976,7 +984,7 @@ export default {
   'quwei-qujian-wumaqujiansanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
     encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 2 ? QuJian[key] : key)
+    decode: (key: number, index: number) => (index < 3 ? QuJianForShow[key] : key)
   },
   'quwei-qujian-simaqujiansanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][1]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
