@@ -1,10 +1,10 @@
 enum DingDanShuang {
-  '5单0双',
-  '4单1双',
-  '3单2双',
-  '2单3双',
+  '0单5双',
   '1单4双',
-  '0单5双'
+  '2单3双',
+  '3单2双',
+  '4单1双',
+  '5单0双'
 }
 
 function encode(key: keyof typeof DingDanShuang): number {
