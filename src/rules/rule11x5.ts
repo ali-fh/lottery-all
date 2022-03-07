@@ -2,7 +2,7 @@ import InputFilter from '../InputFilter'
 import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../Calculator'
-import { encode as DingDanShuangEncode, decode as DingDanShuangDecode } from '../encoders/DingDanShuang'
+import { encode as DingDanShuangEncode } from '../encoders/DingDanShuang'
 import Combination from '../Combination'
 import { I18n } from '../i18n'
 
@@ -205,8 +205,7 @@ export default {
   },
   'quweixing-quweixing-dingdanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['DingDanShuang']),
-    encode: DingDanShuangEncode,
-    decode: DingDanShuangDecode
+    encode: DingDanShuangEncode
   },
   'quweixing-quweixing-caizhongwei': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(3, 9, false)

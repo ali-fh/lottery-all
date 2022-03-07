@@ -2,9 +2,9 @@ import { OptionSection, ProfitParams } from '../Interfases'
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../Calculator'
 import Util from '../Util'
-import { encode as BaoZiShunZiDuiZiEncode, decode as BaoZiShunZiDuiZiDecode } from '../encoders/BaoZiShunZiDuiZi'
-import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
-import { encode as LongHuEncode, decode as LongHuDecode } from '../encoders/LongHuHe'
+import { encode as BaoZiShunZiDuiZiEncode } from '../encoders/BaoZiShunZiDuiZi'
+import { encode as DaXiaoDanShuangEncode } from '../encoders/DaXiaoDanShuang'
+import { encode as LongHuEncode } from '../encoders/LongHuHe'
 import Combination from '../Combination'
 import { I18n } from '../i18n'
 
@@ -24,14 +24,6 @@ enum QuJian {
   '三区(4-5)',
   '四区(6-7)',
   '五区(8-9)'
-}
-
-enum QuJianForShow {
-  '一区',
-  '二区',
-  '三区',
-  '四区',
-  '五区'
 }
 
 enum DaXiao {
@@ -200,7 +192,6 @@ function generatLongHuHeRule(label: string) {
   return {
     betOptions: betOptionsGenerator.generatBetOptions(LONG_HU_HE_ARRAY, false, [label]),
     encode: LongHuEncode,
-    decode: LongHuDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(((data.prize * data.amountUnit) / 6) * data.beishu - data.betAmt, 2))
   }
 }
@@ -911,104 +902,85 @@ export default {
   'qiansan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'zhongsan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'housan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    decode: BaoZiShunZiDuiZiDecode,
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
   },
   'hezhi-wuxing-bsde': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'daxiaodanshuang-daxiaodanshuang-houerdaxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(3)),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'daxiaodanshuang-daxiaodanshuang-housandaxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(2)),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'daxiaodanshuang-daxiaodanshuang-qianerdaxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 2)),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'daxiaodanshuang-daxiaodanshuang-qiansandaxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(0, 3)),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'daxiaodanshuang-daxiaodanshuang-zhongsandaxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY, false, DIGIT_ARRAY.slice(1, 4)),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   'quwei-quwei-wumaquweisanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 2 ? DaXiao[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 2 ? DaXiao[key] : key)
   },
   'quwei-quwei-simaquweisanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-housanquweierxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(2, 3)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-qiansanquweierxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(0, 1)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-quwei-zhongsanquweierxing': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_ARRAY, false, DIGIT_ARRAY.slice(1, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
-    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? DaXiao[key] : key)
+    encode: (key: keyof typeof DaXiao, index: number) => (index < 1 ? DaXiao[key] : key)
   },
   'quwei-qujian-wumaqujiansanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, DIGIT_ARRAY.slice(0, 2)).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
-    encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 3 ? QuJianForShow[key] : key)
+    encode: (key: keyof typeof QuJian, index: number) => (index < 2 ? QuJian[key] : key)
   },
   'quwei-qujian-simaqujiansanxing': {
     betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][1]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2))),
-    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
+    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-housanqujianerxing': {
     betOptions: betOptionsGenerator.generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][2]]).concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(3))),
-    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
+    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-qiansanqujianerxing': {
     betOptions: betOptionsGenerator
       .generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][0]])
       .concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(1, 3))),
-    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
+    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'quwei-qujian-zhongsanqujianerxing': {
     betOptions: betOptionsGenerator
       .generatBetOptions(QUJIAN_ARRAY, false, [I18n.msg['options']['Digits'][1]])
       .concat(betOptionsGenerator.generatNumberBetOptions(0, 9, false, DIGIT_ARRAY.slice(2, 4))),
-    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key),
-    decode: (key: number, index: number) => (index < 1 ? QuJian[key] : key)
+    encode: (key: keyof typeof QuJian, index: number) => (index < 1 ? QuJian[key] : key)
   },
   'longhu-longhuhe-wanqian': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Thousand']}`),
   'longhu-longhuhe-wanbai': generatLongHuHeRule(`${I18n.msg['options']['TenThousand']}:${I18n.msg['options']['Hundred']}`),

@@ -1,6 +1,6 @@
 import BetOptionsGenerator from '../BetOptionsGenerator'
 import Calculator from '../Calculator'
-import { encode as DaXiaoDanShuangEncode, decode as DaXiaoDanShuangDecode } from '../encoders/DaXiaoDanShuang'
+import { encode as DaXiaoDanShuangEncode } from '../encoders/DaXiaoDanShuang'
 import { ProfitParams } from '../Interfases'
 import Combination from '../Combination'
 import { I18n } from '../i18n'
@@ -20,8 +20,7 @@ export default {
   // 大小单双
   'k3-k3-daxiaodanshuang': {
     betOptions: betOptionsGenerator.generatBetOptions([I18n.msg['options']['Big'], I18n.msg['options']['Small'], I18n.msg['options']['Single'], I18n.msg['options']['Double']]),
-    encode: DaXiaoDanShuangEncode,
-    decode: DaXiaoDanShuangDecode
+    encode: DaXiaoDanShuangEncode
   },
   // 三同号
   'k3-k3-santonghao': {

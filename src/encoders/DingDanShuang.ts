@@ -11,8 +11,4 @@ function encode(key: keyof typeof DingDanShuang): number {
   return DingDanShuang[key]
 }
 
-function decode(key: number): string {
-  return DingDanShuang[key] || String(key)
-}
-
-export { encode, decode }
+export { encode }

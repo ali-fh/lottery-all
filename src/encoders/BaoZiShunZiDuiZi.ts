@@ -8,8 +8,4 @@ function encode(key: keyof typeof BaoZiShunZiDuiZi): number {
   return BaoZiShunZiDuiZi[key]
 }
 
-function decode(key: number): string {
-  return BaoZiShunZiDuiZi[key] || String(key)
-}
-
-export { encode, decode }
+export { encode }
