@@ -47,6 +47,7 @@
       "zhongsan-zhixuan-danshi": "输入(0-9)3个号码1注,与开奖号码千 百 十位完全相同(顺序一致),即为中奖"
     },
     "plw": {
+      "qiansan-zhixuan-danshi": "输入(0-9)3个号码1注,与开奖号码万 千 百位完全相同(顺序一致),即为中奖",
       "housan-zhixuan-danshi": "输入(0-9)3个号码1注,与开奖号码百 十 个位完全相同(顺序一致),即为中奖",
       "erxing-zhixuan-houerdanshi": "输入(0-9)2个号码1注,与开奖号码十 个位完全相同(顺序一致),即为中奖",
       "erxing-zhixuan-qianerdanshi": "输入(0-9)2个号码1注,与开奖号码万 千位完全相同(顺序一致),即为中奖",
@@ -115,6 +116,7 @@
       "zhongsan-zhixuan-danshi": "输入注单请使用空格隔开，分割符号为回车\n格式范例:\n01 02 03\n04 05 06\n09 08 07"
     },
     "plw": {
+      "qiansan-zhixuan-danshi": "输入注单请使用空格隔开，分割符号为回车\n格式范例:\n01 02 03\n02 03 04\n08 08 07",
       "housan-zhixuan-danshi": "输入注单请使用空格隔开，分割符号为回车\n格式范例:\n01 02 03\n02 03 04\n08 08 07",
       "erxing-zhixuan-houerdanshi": "输入注单请使用空格隔开，分割符号为回车\n格式范例:\n01 02\n02 03\n08 07",
       "erxing-zhixuan-qianerdanshi": "输入注单请使用空格隔开，分割符号为回车\n格式范例:\n01 02\n02 03\n08 07",
