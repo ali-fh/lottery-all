@@ -1,5 +1,6 @@
 import ruleBasic from './rules/RuleBasic'
 import ruleK3 from './rules/RuleK3'
+import ruleF3D from './rules/RuleF3D'
 import rulePK10 from './rules/RulePK10'
 import rule11x5 from './rules/Rule11x5'
 import ruleSSC from './rules/RuleSSC'
@@ -12,7 +13,8 @@ enum LOTTOERY_TYPE {
   时时彩 = 'ssc',
   快三 = 'k3',
   PK10 = 'pk10',
-  十一选五 = 'l115'
+  十一选五 = 'l115',
+  福彩3D = '3d'
 }
 export default class {
   public currentLotteryType: any = ''
@@ -31,6 +33,9 @@ export default class {
         break
       case LOTTOERY_TYPE.十一选五:
         this.currentLotteryType = rule11x5
+        break
+      case LOTTOERY_TYPE.十一选五:
+        this.currentLotteryType = ruleF3D
         break
       default:
         this.currentLotteryType = ruleSSC
