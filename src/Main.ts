@@ -34,7 +34,7 @@ export default class {
       case LOTTOERY_TYPE.十一选五:
         this.currentLotteryType = rule11x5
         break
-      case LOTTOERY_TYPE.十一选五:
+      case LOTTOERY_TYPE.福彩3D:
         this.currentLotteryType = ruleF3D
         break
       default:
