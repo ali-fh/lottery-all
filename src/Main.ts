@@ -152,12 +152,19 @@ export default class {
         return rule.betOptions.map((position: any, index: number) => position.selected.map((item: any) => rule.encode(item, index)).join(','))
       }
     } else {
-      return this.betFilter(input).map((element: string) =>
-        element
-          .split(' ')
-          .map((num: string) => rule.encode(num))
-          .join(',')
-      )
+      return this.betFilter(input).map((element: string) => {
+        if (this.categoryName === 'ssc' || this.categoryName === 'plw' || this.categoryName === '3d') {
+          return element
+            .split('')
+            .map((num: string) => rule.encode(num))
+            .join(',')
+        } else {
+          return element
+            .split(' ')
+            .map((num: string) => rule.encode(num))
+            .join(',')
+        }
+      })
     }
   }
 }

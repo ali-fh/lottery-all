@@ -10,7 +10,7 @@ describe('test InputFilter', () => {
   })
 
   test('test stringFilterSSC function', () => {
-    const str: string = '112\n223;334,445 556|112\n223;334,445 556|112\n223;334,445 556|112\n223;334,445 556'
+    const str: string = '003,112\n223;334,445 556|112\n223;334,445 556|112\n223;334,445 556|112\n223;334,445 556'
     expect(
       inputFilter.stringFilterSSC.call(
         {

@@ -75,3 +75,12 @@ describe('SSC', () => {
     expect(main.getBetCount()).toBe(90)
   })
 })
+
+describe('SSC', () => {
+  const main = new Main('plw', 'cn')
+
+  test('format test', () => {
+    main.switchRule('qiansan-zhixuan-danshi')
+    expect(main.format('045')).toBe(90)
+  })
+})
