@@ -127,6 +127,10 @@ export default {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
     betCount: (num: number) => getPailieByNoLabel(num, 2)
   },
+  'erxing-zuxuan-houerfushi': {
+    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betCount: (num: number) => getPailieByNoLabel(num, 2)
+  },
   'erxing-zuxuan-qianerdanshi': {
     betCount: () => 2,
     encode: (key: string) => Number(key),
