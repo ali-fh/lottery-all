@@ -902,17 +902,23 @@ export default {
   'qiansan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: function (data: ProfitParams) {
+      return ProfitCalculator.getProfitSSC.call(this, data)
+    }
   },
   'zhongsan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: function (data: ProfitParams) {
+      return ProfitCalculator.getProfitSSC.call(this, data)
+    }
   },
   'housan-qita-teshuhaoma': {
     betOptions: betOptionsGenerator.generatBetOptions(I18n.msg['options']['TeShuHaoMa']),
     encode: BaoZiShunZiDuiZiEncode,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(7.21 * data.amountUnit * data.beishu - data.betAmt, 2))
+    getProfit: function (data: ProfitParams) {
+      return ProfitCalculator.getProfitSSC.call(this, data)
+    }
   },
   'hezhi-wuxing-bsde': {
     betOptions: betOptionsGenerator.generatBetOptions(DA_XIAO_DAN_XHUANG_ARRAY),

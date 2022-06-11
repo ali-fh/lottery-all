@@ -1,6 +1,7 @@
 import Util from './Util'
 import { ProfitParams, OptionSection } from './Interfases'
 import { DaXiaoDanShuang } from './encoders/DaXiaoDanShuang'
+import { encode as BaoZiShunZiDuiZiEncode } from './encoders/BaoZiShunZiDuiZi'
 
 export default class {
   private MAXIMUN: number = 400000
@@ -110,7 +111,11 @@ export default class {
 
   getProfitSSC(this: any, params: ProfitParams): string {
     if (this.betOptions.length) {
-      let arr: Array<number> = this.betOptions[0].selected.map((element: OptionSection) => Number(params.prize[Number(element)])).filter((element: any) => element.length !== 0)
+      let arr: Array<number> = this.betOptions[0].selected
+        .map((element: any) => {
+          return isNaN(Number(params.prize[Number(element)])) ? Number(params.prize[Number(BaoZiShunZiDuiZiEncode(element))]) : Number(params.prize[Number(element)])
+        })
+        .filter((element: any) => element.length !== 0)
 
       arr.sort(function (a, b) {
         return a - b

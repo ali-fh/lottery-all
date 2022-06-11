@@ -28,7 +28,14 @@
   "qiansan-zuxuan-hezhi": { "is_enable_extra": true, "multiple": 616, "extra": [1232], "extra_prize": ["324.6667"], "prize": "649.3333" },
   "qiansan-zuxuan-baodan": { "is_enable_extra": false, "multiple": 616, "prize": "649.3333" },
   "qiansan-qita-hezhiweishu": { "is_enable_extra": false, "multiple": 20533, "prize": "19.4800" },
-  "qiansan-qita-teshuhaoma": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
+  "qiansan-qita-teshuhaoma": {
+    "is_enable_extra": true,
+    "multiple": 2044,
+    "extra": { "0": 2044, "1": 12269, "2": 55215 },
+    "extra_prize": { "0": "195.6000", "1": "32.6000", "2": "7.2444" },
+    "prize": "195.6000",
+    "min_prize": "7.2444"
+  },
   "zhongsan-zhixuan-fushi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
   "zhongsan-zhixuan-danshi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
   "zhongsan-zhixuan-hezhi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
@@ -42,7 +49,14 @@
   "zhongsan-zuxuan-hezhi": { "is_enable_extra": true, "multiple": 616, "extra": [1232], "extra_prize": ["324.6667"], "prize": "649.3333" },
   "zhongsan-zuxuan-baodan": { "is_enable_extra": false, "multiple": 616, "prize": "649.3333" },
   "zhongsan-qita-hezhiweishu": { "is_enable_extra": false, "multiple": 20533, "prize": "19.4800" },
-  "zhongsan-qita-teshuhaoma": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
+  "zhongsan-qita-teshuhaoma": {
+    "is_enable_extra": true,
+    "multiple": 2044,
+    "extra": { "0": 2044, "1": 12269, "2": 55215 },
+    "extra_prize": { "0": "195.6000", "1": "32.6000", "2": "7.2444" },
+    "prize": "195.6000",
+    "min_prize": "7.2444"
+  },
   "housan-zhixuan-fushi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
   "housan-zhixuan-danshi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
   "housan-zhixuan-hezhi": { "is_enable_extra": false, "multiple": 205, "prize": "1948.0000" },
@@ -56,7 +70,14 @@
   "housan-zuxuan-hezhi": { "is_enable_extra": true, "multiple": 616, "extra": [1232], "extra_prize": ["324.6667"], "prize": "649.3333" },
   "housan-zuxuan-baodan": { "is_enable_extra": false, "multiple": 616, "prize": "649.3333" },
   "housan-qita-hezhiweishu": { "is_enable_extra": false, "multiple": 20533, "prize": "19.4800" },
-  "housan-qita-teshuhaoma": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
+  "housan-qita-teshuhaoma": {
+    "is_enable_extra": true,
+    "multiple": 2044,
+    "extra": { "0": 2044, "1": 12269, "2": 55215 },
+    "extra_prize": { "0": "195.6000", "1": "32.6000", "2": "7.2444" },
+    "prize": "195.6000",
+    "min_prize": "7.2444"
+  },
   "erxing-zhixuan-houerfushi": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
   "erxing-zhixuan-houerdanshi": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
   "erxing-zhixuan-houerhezhi": { "is_enable_extra": false, "multiple": 2053, "prize": "194.8000" },
