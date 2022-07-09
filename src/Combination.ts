@@ -2,9 +2,11 @@ import { OptionSection } from './Interfases'
 
 export default class {
   public getAllCombination(data: Array<string>, len: number, isRepeat: boolean = false): any {
-    return data.flatMap((element: string, index: number) => {
-      return len === 1 ? element : this.getAllCombination(data.slice(index + (isRepeat ? 0 : 1)), len - 1, isRepeat).reduce((a: Array<string>, str: string) => a.concat([element + str]), [])
-    })
+    return data.reduce(
+      (acc, element: string, index: number) =>
+        acc.concat(len === 1 ? element : this.getAllCombination(data.slice(index + (isRepeat ? 0 : 1)), len - 1, isRepeat).reduce((a: Array<string>, str: string) => a.concat([element + str]), [])),
+      []
+    )
   }
 
   public getAllCombinationK3(num: number): Array<string> {
