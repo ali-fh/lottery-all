@@ -1,6 +1,6 @@
 {
   "name": "lottery-logic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "彩票公用逻辑库",
   "main": "dist/lottery-logic.cjs.js",
   "scripts": {
