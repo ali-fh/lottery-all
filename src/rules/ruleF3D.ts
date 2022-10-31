@@ -193,7 +193,7 @@ export default {
       return getPailieSumOfHezhiNoBaozi(this.betOptions[0].selected, 3)
     },
     isSingleNum: true,
-    getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2), 2)
+    // getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeE(data, Util.toFixed(data.prize[0] * data.amountUnit * data.beishu - data.betAmt, 2), 2)
   },
   'housan-zuxuan-zusan': {
     betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
