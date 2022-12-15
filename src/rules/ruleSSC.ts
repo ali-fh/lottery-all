@@ -876,17 +876,17 @@ export default {
     limit: 1
   },
   'housan-zuxuan-baodan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptionsSpcial(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
   'erxing-zuxuan-houerbaodan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptionsSpcial(0, 9, false),
     betCount: (num: number) => num * 9,
     limit: 1
   },
   'erxing-zuxuan-qianerbaodan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptionsSpcial(0, 9, false),
     betCount: (num: number) => num * 9,
     limit: 1
   },
