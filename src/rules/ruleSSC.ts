@@ -866,12 +866,12 @@ export default {
     getProfit: (data: ProfitParams) => ProfitCalculator.profitTypeA(data, { 1: 1, 2: 2, 3: 3, 4: 4 })
   },
   'qiansan-zuxuan-baodan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptionsSpcial(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
   'zhongsan-zuxuan-baodan': {
-    betOptions: betOptionsGenerator.generatNumberBetOptions(0, 9, false),
+    betOptions: betOptionsGenerator.generatNumberBetOptionsSpcial(0, 9, false),
     betCount: (num: number) => num * 54,
     limit: 1
   },
