@@ -1,7 +1,10 @@
+import cn from './assets/languages/cn.js'
+import en from './assets/languages/en.js'
+
 export namespace I18n {
   const language: { [propName: string]: any } = {
-    cn: require('./assets/languages/cn.json'),
-    en: require('./assets/languages/en.json')
+    cn: cn,
+    en: en
   }
 
   export let msg: { [propName: string]: any } = language.cn

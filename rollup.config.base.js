@@ -18,8 +18,8 @@ export default {
     },
     {
       format: 'iife',
-      file: 'dist/lottery-all.iife.js'
-      // name: 'MyBundle',
+      file: 'dist/lottery-all.iife.js',
+      name: 'cp',
     }
   ],
   plugins: [
