@@ -3,7 +3,7 @@
   "version": "3.2.0",
   "description": "彩票公用逻辑库",
   "repository": "https://github.com/ali-fh/lottery-all.git",
-  "main": "dist/lottery-logic.cjs.js",
+  "main": "dist/lottery-all.cjs.js",
   "scripts": {
     "dev": "npx rollup -wc rollup.config.dev.js",
     "build": "rimraf dist && rollup -c rollup.config.pro.js",
@@ -15,6 +15,7 @@
   "author": "ali",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/jest": "^27.0.2",
@@ -30,12 +31,12 @@
     "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
+    "typescript": "^4.4.4",
     "rollup-plugin-filesize": "^9.1.2",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^2.0.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

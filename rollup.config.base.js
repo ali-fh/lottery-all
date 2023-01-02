@@ -1,40 +1,46 @@
 import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+
 import copy from 'rollup-plugin-copy-assets'
 import nodeResolve from 'rollup-plugin-node-resolve'
-import babel from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel'
+
 export default {
   input: './src/index.ts',
   output: [
     {
       format: 'cjs',
-      file: 'dist/lottery-logic.cjs.js'
+      file: 'dist/lottery-all.cjs.js'
     },
     {
       format: 'es',
-      file: 'dist/lottery-logic.esm.js'
+      file: 'dist/lottery-all.esm.js'
+    },
+    {
+      format: 'iife',
+      file: 'dist/lottery-all.iife.js'
+      // name: 'MyBundle',
     }
   ],
   plugins: [
-    terser(),
+    copy({
+      assets: ['assets']
+    }),
+    nodeResolve(),
     typescript({
       exclude: 'node_modules/**',
       typescript: require('typescript')
     }),
-    babel({ exclude: "node_modules/**" }),
+    babel({ exclude: 'node_modules/**' }),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
         'node_modules/lodash/lodash.js': ['cloneDeep']
       }
     }),
-    copy({
-      assets: ['assets']
-    }),
-    nodeResolve()
+
   ],
-  onwarn: function (warning) {
+  onwarn: function(warning) {
     if (warning.code === 'THIS_IS_UNDEFINED') {
       return
     }
