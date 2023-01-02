@@ -6,11 +6,10 @@
   "main": "dist/lottery-logic.cjs.js",
   "scripts": {
     "dev": "npx rollup -wc rollup.config.dev.js",
-    "buildr": "rimraf dist && rollup -c rollup.config.pro.js",
+    "build": "rimraf dist && rollup -c rollup.config.pro.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "keywords": [],
   "author": "ali",
