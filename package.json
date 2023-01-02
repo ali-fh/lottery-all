@@ -1,6 +1,6 @@
 {
   "name": "lottery-all",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "description": "彩票公用逻辑库",
   "repository": "https://github.com/ali-fh/lottery-all.git",
   "main": "dist/lottery-all.cjs.js",
