@@ -4,7 +4,7 @@
 
 安装
 ------
-    npm install git+https://github.com/cy-yen/lottery-logic.git[#版本号]
+    npm install https://github.com/ali-fh/lottery-all.git
     
 初始化
 ------
