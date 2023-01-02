@@ -2,6 +2,7 @@
   "name": "lottery-all",
   "version": "1.0.1",
   "description": "彩票公用逻辑库",
+  "repository": "https://github.com/ali-fh/lottery-all.git",
   "main": "dist/lottery-logic.cjs.js",
   "scripts": {
     "dev": "npx rollup -wc rollup.config.dev.js",
