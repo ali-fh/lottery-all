@@ -1,8 +1,9 @@
 import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
 import copy from 'rollup-plugin-copy-assets'
 import nodeResolve from 'rollup-plugin-node-resolve'
-
+import babel from '@rollup/plugin-babel';
 export default {
   input: './src/index.ts',
   output: [
@@ -16,10 +17,12 @@ export default {
     }
   ],
   plugins: [
+    terser(),
     typescript({
       exclude: 'node_modules/**',
       typescript: require('typescript')
     }),
+    babel({ exclude: "node_modules/**" }),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
@@ -31,7 +34,7 @@ export default {
     }),
     nodeResolve()
   ],
-  onwarn: function(warning) {
+  onwarn: function (warning) {
     if (warning.code === 'THIS_IS_UNDEFINED') {
       return
     }

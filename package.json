@@ -4,6 +4,8 @@
   "description": "彩票公用逻辑库",
   "main": "dist/lottery-logic.cjs.js",
   "scripts": {
+    "dev": "npx rollup -wc rollup.config.dev.js",
+    "buildr": "rimraf dist && rollup -c rollup.config.pro.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -13,6 +15,8 @@
   "author": "ali",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/jest": "^27.0.2",
     "@types/lodash.clonedeep": "^4.5.6",
     "jest": "^27.3.1",
@@ -29,6 +33,9 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^2.0.2"
   }
 }
