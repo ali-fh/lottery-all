@@ -9,7 +9,7 @@
     "build": "rimraf dist && rollup -c rollup.config.pro.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "ali",
