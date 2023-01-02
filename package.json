@@ -1,6 +1,6 @@
 {
-  "name": "lottery-logic",
-  "version": "1.0.1",
+  "name": "lottery-all",
+  "version": "1.0.0",
   "description": "彩票公用逻辑库",
   "main": "dist/lottery-logic.cjs.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "keywords": [],
-  "author": "Jimmy Yen",
+  "author": "ali",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^27.0.2",
