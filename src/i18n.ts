@@ -1,4 +1,6 @@
+// @ts-ignore
 import cn from './assets/languages/cn.js'
+// @ts-ignore
 import en from './assets/languages/en.js'
 
 export namespace I18n {
